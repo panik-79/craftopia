@@ -1,6 +1,59 @@
 <?php 
 require('top.php');					
 ?>
+<style>
+/* FAQ Section Styles */
+.faq__accordion .btn-link {
+    text-align: left;
+    font-size: 18px;
+    color: #333;
+    background: transparent;
+    border: none;
+    padding: 15px 0;
+    transition: all 0.3s ease-in-out;
+    margin-left:20px;
+}
+
+.faq__accordion .btn-link:hover {
+    color: #c43b68; /* Change this color to your preferred highlight color */
+    text-decoration: none;
+}
+
+.faq__accordion .card {
+    border: none;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.faq__accordion .card-body {
+    font-size: 16px;
+    color: #777;
+    padding: 20px;
+}
+
+.faq__accordion .btn-link.active {
+    color: #c43b68; /* Change this color to match the highlight color */
+}
+
+/* Optional: Add some styling for the FAQ header */
+.faq__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faq__header h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Optional: Adjust spacing and margin for the FAQ section */
+.faq__area {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+</style>
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
@@ -22,44 +75,6 @@ require('top.php');
         <!-- Start Contact Area -->
         <section class="htc__contact__area ptb--100 bg__white">
             <div class="container">
-                <!-- <div class="row">
-                    <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
-                        <div class="map-contacts--2">
-                            <div id="googleMap"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-                        <h2 class="title__line--6">CONTACT US</h2>
-                        <div class="address">
-                            <div class="address__icon">
-                                <i class="icon-location-pin icons"></i>
-                            </div>
-                            <div class="address__details">
-                                <h2 class="ct__title">our address</h2>
-                                <p>Shri G.S. Institute of Technology and Science</p>
-                            </div>
-                        </div>
-                        <div class="address">
-                            <div class="address__icon">
-                                <i class="icon-envelope icons"></i>
-                            </div>
-                            <div class="address__details">
-                                <h2 class="ct__title">Email</h2>
-                                <p>craftopiahelp@gmail.com</p>
-                            </div>
-                        </div>
-
-                        <div class="address">
-                            <div class="address__icon">
-                                <i class="icon-phone icons"></i>
-                            </div>
-                            <div class="address__details">
-                                <h2 class="ct__title">Phone Number</h2>
-                                <p>+91 XXXXXX-34236</p>
-                            </div>
-                        </div>
-                    </div>      
-                </div> -->
                 <div class="row">
                     <div class="contact-form-wrap mt--60">
                         <div class="col-xs-12">
@@ -95,212 +110,84 @@ require('top.php');
             </div>
         </section>
         <!-- End Contact Area -->
-		<!-- Google Map js -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo "></script>
-    <script src="js/contact-map.js"></script>
-    <script>
-        // When the window has finished loading create our google map below
-        google.maps.event.addDomListener(window, 'load', init);
+<!-- Start FAQ Area -->
 
-        function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 12,
+<section class="faq__area pb--120 bg__white">
+    <div class="container">
+        <div class="faq__header">
+            <h2>Frequently Asked Questions</h2>
+        </div><br><br>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="faq__wrap">
+                    <div class="faq__accordion" id="accordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Question : What payment methods do you accept?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                     We accept payments through PayU and Cash On Delivery
+                                </div>
+                            </div>
+                        </div>
 
-                scrollwheel: false,
+                        <!-- FAQ Item 2 -->
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Question :  Are the handicraft items handmade?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                     Yes, all of our handicraft items are handmade by skilled artisans. We take pride in supporting traditional craftsmanship and providing you with unique, one-of-a-kind pieces.
+                                </div>
+                            </div>
+                        </div>
 
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(23.7286, 90.3854), // New York
+                        <!-- FAQ Item 3 -->
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Question :  Can I cancel my order after it's been placed?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                     You can request to cancel your order within 24 hours of placing it. Please contact our customer support team as soon as possible with your order details. After 24 hours, we may have already processed your order for shipment.
+                                </div>
+                            </div>
+                        </div>
 
-                // How you would like to style the map. 
-                // This is where you would paste any style found on Snazzy Maps.
-                 styles: 
-        [ {
-                "featureType": "all",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "saturation": 36
-                    },
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 40
-                    }
-                ]
-            },
-            {
-                "featureType": "all",
-                "elementType": "labels.text.stroke",
-                "stylers": [
-                    {
-                        "visibility": "on"
-                    },
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 16
-                    }
-                ]
-            },
-            {
-                "featureType": "all",
-                "elementType": "labels.icon",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "administrative",
-                "elementType": "geometry.fill",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 20
-                    }
-                ]
-            },
-            {
-                "featureType": "administrative",
-                "elementType": "geometry.stroke",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 17
-                    },
-                    {
-                        "weight": 1.2
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 20
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 21
-                    }
-                ]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry.fill",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 17
-                    }
-                ]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry.stroke",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 29
-                    },
-                    {
-                        "weight": 0.2
-                    }
-                ]
-            },
-            {
-                "featureType": "road.arterial",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 18
-                    }
-                ]
-            },
-            {
-                "featureType": "road.local",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 16
-                    }
-                ]
-            },
-            {
-                "featureType": "transit",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#000000"
-                    },
-                    {
-                        "lightness": 19
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#141516"
-                    },
-                    {
-                        "lightness": 17
-                    }
-                ]
-            }
-        ]
-            };
+                        <!-- Add more FAQ items as needed -->
 
-            // Get the HTML DOM element that will contain your map 
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('googleMap');
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End FAQ Area -->
+<script>
+    $(document).ready(function () {
+        $('.collapse').on('show.bs.collapse', function () {
+            $(this).prev().find('.btn-link').addClass('active');
+        });
 
-            // Create the Google Map using our element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
+        $('.collapse').on('hide.bs.collapse', function () {
+            $(this).prev().find('.btn-link').removeClass('active');
+        });
+    });
+</script>
 
-            // Let's also add a marker while we're at it
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(23.7286, 90.3854),
-                map: map,
-                title: 'Ramble!',
-                icon: 'images/icons/map-2.png',
-                animation:google.maps.Animation.BOUNCE
-
-            });
-        }
-    </script>
 <?php require('footer.php')?>        

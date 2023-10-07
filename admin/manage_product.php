@@ -6,6 +6,7 @@ $condition1 = " and added_by='". $_SESSION['ADMIN_ID'] ."'";
 if($_SESSION['ADMIN_ROLE'] == 1){
 	$condition = " and product.added_by='". $_SESSION['ADMIN_ID'] ."'";
 	$condition1 = " and added_by='". $_SESSION['ADMIN_ID'] ."'";
+	
 }
 
 $categories_id='';
@@ -57,7 +58,8 @@ if(isset($_POST['submit'])){
 	$meta_desc=get_safe_value($con,$_POST['meta_desc']);
 	$meta_keyword=get_safe_value($con,$_POST['meta_keyword']);
 	
-	$res=mysqli_query($con,"select * from product where name='$name' and $condition1");
+	
+	$res = mysqli_query($con, "select * from product where name='$name'$condition1");
 	$check=mysqli_num_rows($res);
 	if($check>0){
 		if(isset($_GET['id']) && $_GET['id']!=''){

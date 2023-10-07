@@ -33,22 +33,37 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
                <ul class="nav navbar-nav">
                   <li class="menu-title">Menu</li>
                   <li class="menu-item-has-children dropdown">
-                     <a href="product.php" > Product Master</a>
+                     <a href="product.php" > Manage Products</a>
                   </li>
-              <li class="menu-item-has-children dropdown">
-                     <a href="order_master.php" > Order Master</a>
+                  <li class="menu-item-has-children dropdown">
+                     <?php 
+                  if($_SESSION['ADMIN_ROLE'] == 1) {
+                     echo '<a href="order_master_vendor.php" > Manage Orders</a>';
+                  } else { 
+                     echo '<a href="order_master.php" > Manage Orders</a>';
+                  }
+                  
+                  ?>
+                  </li>
+                  <li class="menu-item-has-children dropdown">
+                     <a href="all_chats.php" >Chats</a>
                   </li>
                   <?php if($_SESSION['ADMIN_ROLE'] != 1) {?>
+                  <li class="menu-item-has-children dropdown">
+                     <a href="product_review.php" > Product Review</a>
+                  </li>
                   <li class="menu-item-has-children dropdown">
                      <a href="vendor_management.php" > Vendor Management</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
-                     <a href="categories.php" > Categories Master</a>
+                     <a href="categories.php" > Manage Categories </a>
                   </li>
 				      <li class="menu-item-has-children dropdown">
-                     <a href="users.php" > User Master</a>
+                     <a href="users.php" > Manage Users</a>
                   </li>
-				  <li class="menu-item-has-children dropdown">
+                  <li class="menu-item-has-children dropdown">
+                     <a href="add_videos.php" > Add Videos</a>
+				      <li class="menu-item-has-children dropdown">
                      <a href="contact_us.php" > Contact Us</a>
                   </li>
 				  <?php } ?>  

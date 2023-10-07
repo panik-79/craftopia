@@ -1,6 +1,6 @@
 <?php
 require('top.inc.php');
-
+isAdmin();
 $sql="select * from users order by id desc";
 $res=mysqli_query($con,$sql);
 ?>

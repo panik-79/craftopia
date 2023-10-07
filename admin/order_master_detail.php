@@ -1,5 +1,6 @@
 <?php
 require('top.inc.php');
+isAdmin();
 $order_id=get_safe_value($con,$_GET['id']);
 if(isset($_POST['update_order_status'])){
 	$update_order_status=$_POST['update_order_status'];

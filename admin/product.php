@@ -3,7 +3,7 @@ require('top.inc.php');
 
 $condition = "";
 $condition1 = " and added_by='". $_SESSION['ADMIN_ID'] ."'";
-if($_SESSION['ADMIN_ROLE'] == 1){
+if($_SESSION['ADMIN_ROLE'] == 1 || $_SESSION['ADMIN_ROLE'] == 0){
 	$condition = " and product.added_by='". $_SESSION['ADMIN_ID'] ."'";
 	$condition1 = " and added_by='". $_SESSION['ADMIN_ID'] ."'";
 }
@@ -17,13 +17,13 @@ if(isset($_GET['type']) && $_GET['type']!=''){
 		}else{
 			$status='0';
 		}
-		$update_status_sql="update product set status='$status' $condition2 where id='$id'";
+		$update_status_sql="update product set status='$status' $condition1 where id='$id'";
 		mysqli_query($con,$update_status_sql);
 	}
 	
 	if($type=='delete'){
 		$id=get_safe_value($con,$_GET['id']);
-		$delete_sql="delete from product where id='$id' $condition2";
+		$delete_sql="delete from product where id='$id' $condition1";
 		mysqli_query($con,$delete_sql);
 	}
 }
@@ -49,7 +49,7 @@ $res=mysqli_query($con,$sql);
 							<tr>
 							   <th class="serial">#</th>
 							   <th width="2%">ID</th>
-							   <th width="10%">Categories</th>
+							   <th width="10%">Category</th>
 							   <th width="30%">Name</th>
 							   <th width="10%">Image</th>
 							   <th width="10%">MRP</th>

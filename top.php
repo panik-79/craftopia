@@ -19,7 +19,7 @@ if(isset($_SESSION['USER_LOGIN'])){
 		$wid=get_safe_value($con,$_GET['wishlist_id']);
 		mysqli_query($con,"delete from wishlist where id='$wid' and user_id='$uid'");
 	}
-
+    
 	$wishlist_count=mysqli_num_rows(mysqli_query($con,"select product.name,product.image,product.price,product.mrp,wishlist.id from product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'"));
 }
 ?>
@@ -68,23 +68,37 @@ if(isset($_SESSION['USER_LOGIN'])){
                         <div class="menumenu__container clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5"> 
                                 <div class="logo">
-                                     <h1>Craftopia</h1>
+                                     <a href="index.php"><h1>Craftopia</h1></a>
                                 </div>
                             </div>
                             <div class="col-md-7 col-lg-6 col-sm-5 col-xs-3">
-                                <nav class="main__menu__nav hidden-xs hidden-sm">
-                                    <ul class="main__menu">
-                                        <li class="drop"><a href="index.php">Home</a></li>
-                                        <?php
-										foreach($cat_arr as $list){
-											?>
-											<li><a href="categories.php?id=<?php echo $list['id']?>"><?php echo $list['categories']?></a></li>
-											<?php
-										}
-										?>
-                                        <li><a href="contact.php">contact</a></li>
-                                    </ul>
-                                </nav>
+                            <nav class="main__menu__nav hidden-xs hidden-sm">
+                                <ul class="main__menu">
+                                    <li class="drop"><a href="index.php">Home</a></li>
+                                    <li class="dropdown">
+
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <?php
+                                            foreach ($cat_arr as $list) {
+                                                ?>
+                                                <li><a href="categories.php?id=<?php echo $list['id'] ?>"><?php echo $list['categories'] ?></a></li>
+                                                <?php
+                                            }
+                                            ?>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.php">Contact</a></li>
+                                    <li><a href="learning_platform/home.php">Learn</a></li>
+                                    <?php
+                                    if(isset($_SESSION['USER_LOGIN'])){
+                                        echo '<li><a href="all_chats.php">Chats</a></li>' ;
+                                    }
+                                    ?>
+                                    
+                                </ul>
+                            </nav>
+
 
                                 <div class="mobile-menu clearfix visible-xs visible-sm">
                                     <nav id="mobile_dropdown">
@@ -114,7 +128,6 @@ if(isset($_SESSION['USER_LOGIN'])){
 											echo '<a href="login.php">Login/Register</a>';
 										}
 										?>
-										
                                     </div>
                                     <div class="htc__shopping__cart">
 										<?php

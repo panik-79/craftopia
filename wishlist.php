@@ -9,7 +9,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 }
 $uid=$_SESSION['USER_ID'];
 
-$res=mysqli_query($con,"select product.name,product.image,product.price,product.mrp,wishlist.id from product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'");
+$res=mysqli_query($con,"select product.name,product.id as pid,product.image,product.price,product.mrp,wishlist.id from product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'");
 ?>
 
  <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -46,21 +46,26 @@ $res=mysqli_query($con,"select product.name,product.image,product.price,product.
                                         </tr>
                                     </thead>
                                     <tbody>
-										<?php
-										while($row=mysqli_fetch_assoc($res)){
-										?>
-											<tr>
-												<td class="product-thumbnail"><a href="#"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image']?>" width="250px" height="250px"  /></a></td>
-												<td class="product-name"><a href="#"><?php echo $row['name']?></a>
-													<ul  class="pro__prize">
-														<li>Rs.<?php echo $row['price']?></li>&nbsp;&nbsp;&nbsp;
-														<li class="old__prize"><strike>Rs.<?php echo $row['mrp']?></strike></li>
-													</ul>
-												</td>
-												<td class="product-remove"><a href="wishlist.php?wishlist_id=<?php echo $row['id']?>"><i class="icon-trash icons"></i></a></td>
-											</tr>
-											<?php } ?>
-                                    </tbody>
+                                    <?php
+                                    while ($row = mysqli_fetch_assoc($res)) {
+
+                                        $product_url = 'product.php?id=' . $row['pid']; 
+
+                                        ?>
+                                        <tr>
+                                            <td class="product-thumbnail"><a href="<?php echo $product_url ?>"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $row['image'] ?>" width="130px" height="140px" /></a></td>
+                                            <td class="product-name"><a href="<?php echo $product_url ?>"><?php echo $row['name'] ?></a>
+                                                <ul class="pro__prize">
+                                                    <li>Rs.<?php echo $row['price'] ?></li>&nbsp;&nbsp;&nbsp;
+                                                    <li class="old__prize"><strike>Rs.<?php echo $row['mrp'] ?></strike></li>
+                                                </ul>
+                                            </td>
+                                            <td class="product-remove"><a href="wishlist.php?wishlist_id=<?php echo $row['id'] ?>"><i class="icon-trash icons"></i></a></td>
+                                            <td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $row['pid']?>','add')">Add to Cart</a></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+
                                 </table>
                             </div>
                             <div class="row">

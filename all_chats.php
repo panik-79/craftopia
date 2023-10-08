@@ -28,7 +28,10 @@ $result = mysqli_stmt_get_result($stmt);
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/custom.css">
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+
 </head>
 <style>
 
@@ -38,35 +41,27 @@ $result = mysqli_stmt_get_result($stmt);
         padding: 0;
     }
 
-    .form header {
-    font-size: 25px;
-    font-weight: 600;
-    padding-bottom: 10px;
+    form{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+    form input {
+    font-size: 18px;
+    text-align: left;
+    font-weight: 300;
+    padding: 10px;
     border-bottom: 1px solid #e6e6e6;
-    }
-
-    .form form {
-    margin: 20px 0;
-    }
-
-    .form form .error-text {
-    color: #721c24;
-    padding: 8px 10px;
-    text-align: center;
+    border: 2px solid #999;
     border-radius: 5px;
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    margin-bottom: 10px;
-    display: none;
     }
-
-
 
     /* Chat Area Styles */
     .chat-area header {
     display: flex;
     align-items: center;
     padding: 18px 30px;
+    
     }
 
     .chat-box {
@@ -90,9 +85,7 @@ $result = mysqli_stmt_get_result($stmt);
     /* Style for sender's messages (outgoing) */
     .chat-box .outgoing {
     display: flex;
-    /* flex-direction: row-reverse; Reverse the direction of messages for sender */
     align-items: flex-end;
-    /* Align sender's messages to the right */
     margin-right: 0; /* Adjust spacing for sender */
     }
 
@@ -103,16 +96,17 @@ $result = mysqli_stmt_get_result($stmt);
     }
 
     .chat-box .outgoing .details p {
-    background: #007bff; /* Sender's message background color */
+    background: #c43b68; /* Sender's message background color */
     color: #fff; /* Sender's message text color */
     border-radius: 20px 20px 20px 20px; /* Round the corners for sender's messages */
-    margin-right: 60px; /* Adjust spacing for sender */
+    margin-right: 0px; /* Adjust spacing for sender */
+    padding: 5px;
     }
 
     /* Style for receiver's messages (incoming) */
     .chat-box .incoming {
     display: flex;
-    align-items: flex-end; /* Align receiver's messages to the left */
+    align-items: flex-start; /* Align receiver's messages to the left */
     margin-left: 0; /* Adjust spacing for receiver */
     }
 
@@ -124,22 +118,35 @@ $result = mysqli_stmt_get_result($stmt);
     }
 
     .chat-box .incoming .details p {
-    background: #f2f2f2; /* Receiver's message background color */
-    color: #333; /* Receiver's message text color */
+    background: #fff; /* Receiver's message background color */
+    color: #c43b68; /* Receiver's message text color */
     border-radius: 20px 20px 20px 20px; /* Round the corners for receiver's messages */
-    margin-left: 60px; /* Adjust spacing for receiver */
+    margin-left: 10px;
+    padding: 5px;
+    }
+
+    button[type="submit"] {
+            background-color: #c43b68;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+    button[type="submit"] i.fab.fa-telegram-plane {
+        margin-right: 5px;
     }
 
     /* Responsive Media Query */
-    /@media screen and (max-width: 450px) {
-    .form, .users {
-        padding: 20px;
-    }
+    @media screen and (max-width: 450px) {
     
     .form header {
         text-align: center;
     }
     
+
     .form form .name-details {
         flex-direction: column;
     }
@@ -152,23 +159,10 @@ $result = mysqli_stmt_get_result($stmt);
         margin-left: 0px;
     }
 
-    .users header img {
-        height: 45px;
-        width: 45px;
-    }
-
-    .users header .logout {
-        padding: 6px 10px;
-        font-size: 16px;
-    }
-
     :is(.users, .users-list) .content .details {
         margin-left: 15px;
     }
 
-    .users-list a {
-        padding-right: 10px;
-    }
 
     .chat-area header {
         padding: 15px 20px;
@@ -373,7 +367,7 @@ $result = mysqli_stmt_get_result($stmt);
 
                 const header = document.querySelector('.details');
                 const sellerName = sellerItem.querySelector('a').textContent;
-                header.innerHTML = '<span>&nbsp;&nbsp;' + sellerName + '</span>';
+                header.innerHTML = '<h2>&nbsp;&nbsp;' + sellerName + '</h2>';
 
                 // Clear the chat box before loading new content
                 chatBox.innerHTML = '<p>Loading chat...</p>'; // Display a loading message

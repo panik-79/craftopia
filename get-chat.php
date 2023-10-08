@@ -22,7 +22,7 @@ if(isset($_SESSION["USER_ID"]) && isset($_POST['incomingid'])){
             // Escape the message content to prevent XSS
             $message = htmlspecialchars($row['msg']);
             
-            if($row['outgoing_msg_id'] === $outgoing_id){
+            if($row['outgoing_msg_id'] == $outgoing_id){
                 $output .= '<div class="chat outgoing">
                             <div class="details">
                                 <p>'. $message .'</p>

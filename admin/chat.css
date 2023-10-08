@@ -1,33 +1,22 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 body, h2 {
     margin: 0;
     padding: 0;
 }
 
-.form header {
-font-size: 25px;
-font-weight: 600;
-padding-bottom: 10px;
+form{
+    display: flex;
+    justify-content: center;
+}
+form input {
+font-size: 18px;
+text-align: left;
+font-weight: 300;
+padding: 10px;
 border-bottom: 1px solid #e6e6e6;
-}
-
-.form form {
-margin: 20px 0;
-}
-
-.form form .error-text {
-color: #721c24;
-padding: 8px 10px;
-text-align: center;
+border: 2px solid #999;
 border-radius: 5px;
-background: #f8d7da;
-border: 1px solid #f5c6cb;
-margin-bottom: 10px;
-display: none;
 }
-
-
 
 /* Chat Area Styles */
 .chat-area header {
@@ -57,9 +46,7 @@ flex-direction: column; /* Display messages in a vertical column */
 /* Style for sender's messages (outgoing) */
 .chat-box .outgoing {
 display: flex;
-/* flex-direction: row-reverse; Reverse the direction of messages for sender */
 align-items: flex-end;
-/* Align sender's messages to the right */
 margin-right: 0; /* Adjust spacing for sender */
 }
 
@@ -70,16 +57,17 @@ max-width: calc(100% - 30px); /* Limit the width of sender's messages */
 }
 
 .chat-box .outgoing .details p {
-background: #007bff; /* Sender's message background color */
+background: #c43b68; /* Sender's message background color */
 color: #fff; /* Sender's message text color */
 border-radius: 20px 20px 20px 20px; /* Round the corners for sender's messages */
-margin-right: 60px; /* Adjust spacing for sender */
+margin-right: 0px; /* Adjust spacing for sender */
+padding: 5px;
 }
 
 /* Style for receiver's messages (incoming) */
 .chat-box .incoming {
 display: flex;
-align-items: flex-end; /* Align receiver's messages to the left */
+align-items: flex-start; /* Align receiver's messages to the left */
 margin-left: 0; /* Adjust spacing for receiver */
 }
 
@@ -91,21 +79,34 @@ max-width: calc(100% - 30px); /* Limit the width of receiver's messages */
 }
 
 .chat-box .incoming .details p {
-background: #f2f2f2; /* Receiver's message background color */
-color: #333; /* Receiver's message text color */
+background: #fff; /* Receiver's message background color */
+color: #c43b68; /* Receiver's message text color */
 border-radius: 20px 20px 20px 20px; /* Round the corners for receiver's messages */
-margin-left: 60px; /* Adjust spacing for receiver */
+margin-left: 10px;
+padding: 5px;
+}
+
+button[type="submit"] {
+        background-color: #c43b68;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+button[type="submit"] i.fab.fa-telegram-plane {
+    margin-right: 5px;
 }
 
 /* Responsive Media Query */
 @media screen and (max-width: 450px) {
-.form, .users {
-    padding: 20px;
-}
 
 .form header {
     text-align: center;
 }
+
 
 .form form .name-details {
     flex-direction: column;
@@ -119,23 +120,10 @@ margin-left: 60px; /* Adjust spacing for receiver */
     margin-left: 0px;
 }
 
-.users header img {
-    height: 45px;
-    width: 45px;
-}
-
-.users header .logout {
-    padding: 6px 10px;
-    font-size: 16px;
-}
-
 :is(.users, .users-list) .content .details {
     margin-left: 15px;
 }
 
-.users-list a {
-    padding-right: 10px;
-}
 
 .chat-area header {
     padding: 15px 20px;
@@ -235,48 +223,3 @@ margin-left: 60px; /* Adjust spacing for receiver */
     margin-bottom: 10px;
 }
 
-
-/* Chat Area Styles */
-.chat-area {
-    background-color: #f9f9f9; /* Light background color */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft box shadow */
-}
-
-/* Style for sender's messages (outgoing) */
-.chat-box .outgoing .details p {
-    background: #007bff; /* Blue sender's message background color */
-    color: #fff;
-    border-radius: 15px; /* Rounded corners */
-    padding: 10px 15px; /* Spacing inside the message box */
-    margin-right: 30px; /* Adjust spacing for sender */
-}
-
-/* Style for receiver's messages (incoming) */
-.chat-box .incoming .details p {
-    background: #f2f2f2; /* Light gray receiver's message background color */
-    color: #333;
-    border-radius: 15px;
-    padding: 10px 15px;
-    margin-left: 30px; /* Adjust spacing for receiver */
-}
-
-/* Send button style (assuming you have a button for sending messages) */
-.chat-area form button {
-    background: #007bff; /* Blue button background color */
-    color: #fff;
-    border: none;
-    border-radius: 50%; /* Circular button */
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.2s; /* Smooth color transition on hover */
-}
-
-.chat-area form button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-/* Additional styles can be added as needed for better aesthetics. */

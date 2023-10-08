@@ -91,14 +91,15 @@ body {
 .chat-box .outgoing .details {
   margin-left: 10px;
   margin-right: 0; /* Adjust spacing for sender */
-  max-width: calc(100% - 30px); /* Limit the width of sender's messages */
+  max-width: calc(100% - 3px); 
+  /* Limit the width of sender's messages */
 }
 
 .chat-box .outgoing .details p {
   background: #007bff; /* Sender's message background color */
   color: #fff; /* Sender's message text color */
   border-radius: 20px 20px 20px 20px; /* Round the corners for sender's messages */
-  margin-right: 60px; /* Adjust spacing for sender */
+  /* margin-right: 0px; Adjust spacing for sender */
 }
 
 /* Style for receiver's messages (incoming) */
@@ -178,7 +179,7 @@ body {
   }
 
   .chat-box .outgoing .details {
-    max-width: 230px;
+    max-width: 500px;
   }
 
   .chat-box .incoming .details {

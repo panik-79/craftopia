@@ -16,10 +16,8 @@ $price='';
 $qty='';
 $image='';
 $short_desc	='';
-$description	='';
-$meta_title	='';
-$meta_description	='';
-$meta_keyword='';
+$description ='';
+$best_seller ='';
 
 $msg='';
 $image_required='required';
@@ -37,9 +35,8 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 		$qty=$row['qty'];
 		$short_desc=$row['short_desc'];
 		$description=$row['description'];
-		$meta_title=$row['meta_title'];
-		$meta_desc=$row['meta_desc'];
-		$meta_keyword=$row['meta_keyword'];
+		$best_seller=$row['best_seller'];
+
 	}else{
 		header('location:product.php');
 		die();
@@ -54,9 +51,8 @@ if(isset($_POST['submit'])){
 	$qty=get_safe_value($con,$_POST['qty']);
 	$short_desc=get_safe_value($con,$_POST['short_desc']);
 	$description=get_safe_value($con,$_POST['description']);
-	$meta_title=get_safe_value($con,$_POST['meta_title']);
-	$meta_desc=get_safe_value($con,$_POST['meta_desc']);
-	$meta_keyword=get_safe_value($con,$_POST['meta_keyword']);
+	$best_seller=get_safe_value($con,$_POST['best_seller']);
+
 	
 	
 	$res = mysqli_query($con, "select * from product where name='$name'$condition1");
@@ -91,15 +87,15 @@ if(isset($_POST['submit'])){
 			if($_FILES['image']['name']!=''){
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 				move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-				$update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',image='$image' where id='$id'";
+				$update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',best_seller='$best_seller'  ,image='$image' where id='$id'";
 			}else{
-				$update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword' where id='$id'";
+				$update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',best_seller='$best_seller' where id='$id'";
 			}
 			mysqli_query($con,$update_sql);
 		}else{
 			$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 			move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-			mysqli_query($con,"insert into product(categories_id,name,mrp,price,qty,short_desc,description,meta_title,meta_desc,meta_keyword,status,image, added_by) values('$categories_id','$name','$mrp','$price','$qty','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword',1,'$image', '".$_SESSION['ADMIN_ID']."')");
+			mysqli_query($con,"insert into product(categories_id,name,mrp,price,qty,short_desc,description,best_seller,status,image, added_by) values('$categories_id','$name','$mrp','$price','$qty','$short_desc','$description','$best_seller',1,'$image', '".$_SESSION['ADMIN_ID']."')");
 		}
 		header('location:product.php');
 		die();
@@ -145,6 +141,26 @@ if(isset($_POST['submit'])){
 									<label for="categories" class=" form-control-label">Price</label>
 									<input type="text" name="price" placeholder="Enter product price" class="form-control" required value="<?php echo $price?>">
 								</div>
+								<div class="form-group">
+									<label for="categories" class=" form-control-label">Best Seller</label>
+									<select class="form-control" name="best_seller" required>
+										<option>Select</option>
+										<?php
+										if($best_seller==1){
+											echo '<option value="1" selected>Yes</option>
+											<option value="0">No</option>';
+										}else if($best_seller==0){
+											echo '<option value="1">Yes</option>
+											<option value="0" selected>No</option>';
+										}else{
+											echo '<option value="1">Yes</option>
+											<option value="0">No</option>';
+										}
+										?>
+										
+										<option value="0">No</option>
+									</select>
+								</div>
 								
 								<div class="form-group">
 									<label for="categories" class=" form-control-label">Qty</label>
@@ -165,22 +181,7 @@ if(isset($_POST['submit'])){
 									<label for="categories" class=" form-control-label">Description</label>
 									<textarea name="description" placeholder="Enter product description" class="form-control" required><?php echo $description?></textarea>
 								</div>
-								
-								<div class="form-group">
-									<label for="categories" class=" form-control-label">Meta Title</label>
-									<textarea name="meta_title" placeholder="Enter product meta title" class="form-control"><?php echo $meta_title?></textarea>
-								</div>
-								
-								<div class="form-group">
-									<label for="categories" class=" form-control-label">Meta Description</label>
-									<textarea name="meta_desc" placeholder="Enter product meta description" class="form-control"><?php echo $meta_description?></textarea>
-								</div>
-								
-								<div class="form-group">
-									<label for="categories" class=" form-control-label">Meta Keyword</label>
-									<textarea name="meta_keyword" placeholder="Enter product meta keyword" class="form-control"><?php echo $meta_keyword?></textarea>
-								</div>
-								
+		
 								
 							   <button id="payment-button" name="submit" type="submit" class="btn btn-lg btn-info btn-block">
 							   <span id="payment-button-amount">Submit</span>

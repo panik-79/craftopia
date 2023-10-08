@@ -130,8 +130,11 @@ $product_review_res=mysqli_query($con,"select users.name,product_review.id,produ
                                 </div>
 
 								<a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
-                                <a class="fr__btn" href='chat.php?outgoing_msg_id=<?php echo $_SESSION["USER_ID"]; ?>&incoming_msg_id=<?php echo $seller_id; ?>&pid=<?php echo $product_id; ?>'>Contact Seller</a>
+								
+								<?php if(isset($_SESSION['USER_LOGIN'])){ ?>
 
+                                <a class="fr__btn" href='chat.php?outgoing_msg_id=<?php echo $_SESSION["USER_ID"]; ?>&incoming_msg_id=<?php echo $seller_id; ?>&pid=<?php echo $product_id; ?>'>Contact Seller</a>
+								<?php } ?>
                             </div>
                         </div>
                     </div>

@@ -163,6 +163,10 @@ $result = mysqli_stmt_get_result($stmt);
         margin-left: 15px;
     }
 
+    .chat-container{
+        display:flex;
+        flex-direction: column;
+    }
 
     .chat-area header {
         padding: 15px 20px;

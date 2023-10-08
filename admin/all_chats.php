@@ -296,7 +296,7 @@ button[type="submit"] i.fab.fa-telegram-plane {
 
 
 
-<script>
+<!-- <script>
         function scrollToBottom() {
             var chatBox = document.getElementById('chat-box');
             chatBox.scrollTop = chatBox.scrollHeight;
@@ -306,7 +306,7 @@ button[type="submit"] i.fab.fa-telegram-plane {
         const chatBox = document.getElementById('chat-box');
         var customerId = <?php echo $customerId; ?>;
         
-        function sendMessage() {
+        function sendMessage(customerId) {
             var messageInput = document.getElementById('message-input');
             var message = messageInput.value;
 
@@ -397,4 +397,104 @@ button[type="submit"] i.fab.fa-telegram-plane {
             e.preventDefault();
             sendMessage(customerId);
         });
-    </script>
+</script> -->
+
+<script>
+    function scrollToBottom() {
+        var chatBox = document.getElementById('chat-box');
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    const customerItems = document.querySelectorAll('.customer-item');
+    const chatBox = document.getElementById('chat-box');
+    var customerId = null; // Initialize customerId as null
+
+    function sendMessage() {
+        var messageInput = document.getElementById('message-input');
+        var message = messageInput.value;
+
+        if (message !== '') {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'insert-chat.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            // Combine both parameters in a single string
+            var data = 'customer_id=' + customerId + '&message=' + message;
+
+            xhr.onload = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Message sent successfully, you can handle the response here if needed
+                        console.log("Success");
+                        console.log(xhr.responseText);
+                        // Update the chat-box with the new message
+                        chatBox.innerHTML += '<div class="outgoing-message"><p>' + message + '</p></div>';
+                        scrollToBottom(); // Optionally, scroll to the bottom of the chat
+                    } else {
+                        // Error sending the message, handle it as needed
+                        console.error('Error sending message. Status code: ' + xhr.status);
+                    }
+                }
+            };
+
+            xhr.send(data); // Send the combined data
+            // Clear the input field
+            messageInput.value = '';
+        }
+    }
+
+    // JavaScript to load chat when a customer is clicked
+    customerItems.forEach((customerItem) => {
+        customerItem.addEventListener('click', () => {
+            customerId = customerItem.querySelector('a').getAttribute('href').split('=')[1]; // Set customerId
+            console.log('Customer ID: ' + customerId);
+
+            const header_namebox = document.querySelector('.details');
+            const customerName = customerItem.querySelector('a').textContent;
+            header_namebox.innerHTML = '<span>&nbsp;&nbsp;' + customerName + '</span>';
+
+            // Clear the chat box before loading new content
+            chatBox.innerHTML = '<p>Loading chat...</p>'; // Display a loading message
+
+            // Function to load chat messages for the selected customer
+            function loadChat() {
+                // Send an AJAX request to get-chat.php to fetch chat messages for the selected customer
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'get-chat.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var data = xhr.responseText;
+                            chatBox.innerHTML = data; // Update the chat-box with fetched chat messages
+                            scrollToBottom(); // Optionally, scroll to the bottom of the chat
+                        } else {
+                            chatBox.innerHTML = '<p>Error loading chat.</p>'; // Display an error message
+                        }
+                    }
+                };
+
+                xhr.send('customer_id=' + customerId);
+            }
+
+            // Load chat initially
+            loadChat();
+
+            // Set up an interval to periodically load chat messages
+            const chatInterval = setInterval(loadChat, 1000); // Adjust the interval as needed (e.g., every 5 seconds)
+
+            // Function to stop the chat loading interval when needed (e.g., when seller switches customers)
+            function stopChatInterval() {
+                clearInterval(chatInterval);
+            }
+
+            // Event listener to stop the chat loading interval when seller switches customers
+            customerItem.addEventListener('mouseleave', stopChatInterval);
+        });
+    });
+
+    document.getElementById('message-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        sendMessage();
+    });
+</script>

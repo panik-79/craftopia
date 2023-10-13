@@ -42,7 +42,7 @@ $res=mysqli_query($con,$sql);
 							   <th class="serial">#</th>
 							   <th>ID</th>
 							   <th>Category</th>
-							   <th>Image</th> <!-- Added a new column for category image -->
+							   <th>Image</th>
 							   <th></th>
 							</tr>
 						 </thead>
@@ -54,7 +54,7 @@ $res=mysqli_query($con,$sql);
 							   <td class="serial"><?php echo $i?></td>
 							   <td><?php echo $row['id']?></td>
 							   <td><?php echo $row['categories']?></td>
-							   <td><img src="<?php echo CATEGORY_SERVER_PATH.$row['image']?>" alt="Category Image" width="100"></td> <!-- Display category image -->
+							   <td><img src="<?php echo CATEGORY_SERVER_PATH.$row['image']?>" alt="Category Image" width="100"></td> 
 							   <td>
 								<?php
 								if($row['status']==1){

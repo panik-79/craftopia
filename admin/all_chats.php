@@ -1,17 +1,13 @@
 <?php
 require('top.inc.php');
 
-// Retrieve the seller's ID from the session (replace this with your seller's authentication logic)
 $sellerId = $_SESSION['ADMIN_ID'];
-
-// Query the database to get a list of customers who have chatted with the seller
 $sql = "SELECT DISTINCT outgoing_msg_id FROM messages WHERE incoming_msg_id = $sellerId";
 $stmt = mysqli_prepare($con, $sql);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 ?>
 
-<!-- Outgoing are customer's messages -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -43,12 +39,12 @@ form input {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    max-width: 100%; /* Adjust the maximum width as needed */
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack child elements vertically */
-    align-items: flex-start; /* Align content to the left */
-    clear: both; /* Clear any floats */
-    margin-left: auto; /* Push it to the right side */
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    clear: both;
+    margin-left: auto;
 }
 
 /* Chat Area Styles */
@@ -66,22 +62,22 @@ form input {
     box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%),
                 inset 0 -32px 32px -32px rgb(0 0 0 / 5%);
     border-radius: 5px;
-    max-width: 450px; /* Adjust the maximum width as needed */
+    max-width: 450px;
 }
 
 /* CSS for the chat messages */
 .chat-box .chat {
     margin: 0;
     display: flex;
-    flex-direction: column; /* Display messages in a vertical column */
+    flex-direction: column;
 }
 
 /* Style for sender's messages (outgoing) */
 .chat-box .outgoing {
     display: flex;
     align-items: flex-end;
-    margin-right: auto; /* Push sender's messages to the right */
-    max-width: calc(100% - 30px); /* Limit the width of sender's messages */
+    margin-right: auto;
+    max-width: calc(100% - 30px);
 }
 
 .chat-box .outgoing .details {
@@ -90,38 +86,33 @@ form input {
 }
 
 .chat-box .outgoing .details p {
-    background: #c43b68; /* Sender's message background color */
-    color: #fff; /* Sender's message text color */
-    border-radius: 20px 20px 20px 20px; /* Round the corners for sender's messages */
-    margin-right: 0px; /* Adjust spacing for sender */
+    background: #c43b68;
+    color: #fff;
+    border-radius: 20px 20px 20px 20px;
+    margin-right: 0px;
     padding: 5px;
-    /* max-width: 50%; Set the maximum width for incoming messages */
-    /* word-wrap: break-word; Wrap long words to the next line */
 }
 
 /* Style for receiver's messages (incoming) */
 .chat-box .incoming {
     display: flex;
-    align-items: flex-start; /* Align receiver's messages to the left */
-    margin-left: auto; /* Push receiver's messages to the left */
+    align-items: flex-start;
+    margin-left: auto;
     padding:5px;
 }
 
 .chat-box .incoming .details {
     margin-right: 10px;
-    margin-left: 0; /* Adjust spacing for receiver */
-    /* max-width: calc(100% - 30px); Limit the width of receiver's messages */
+    margin-left: 0; 
     text-align: end;
 }
 
 .chat-box .incoming .details p {
-    background: #fff; /* Receiver's message background color */
-    color: #c43b68; /* Receiver's message text color */
-    border-radius: 20px 20px 20px 20px; /* Round the corners for receiver's messages */
+    background: #fff;
+    color: #c43b68;
+    border-radius: 20px 20px 20px 20px;
     margin-left: 10px;
     padding: 5px;
-     /* Set the maximum width for incoming messages */
-    /* Wrap long words to the next line */ /* Limit the width of receiver's messages */
 }
 
 button[type="submit"] {
@@ -240,7 +231,6 @@ button[type="submit"] i.fab.fa-telegram-plane {
 
 </style>
     <div class="chat-container">
-        <!-- Left Sidebar with Customer Names -->
         <div class="sidebar">
             <h2>Customer Chats</h2>
             <ul class="customer-list">
@@ -257,11 +247,9 @@ button[type="submit"] i.fab.fa-telegram-plane {
 
                     if ($customerData = mysqli_fetch_assoc($customerResult)) {
                         $customerName = $customerData['name'];
-                        // Add more customer details as needed
                         echo '<li class="customer-item">';
                         echo '<a href="chat_from_all_chats.php?outgoing_msg_id=' . $customerId . '&incoming_msg_id=' . $sellerId . '">' . $customerName . '</a>';
                         echo '<div class="customer-info">';
-                        // Display customer information (e.g., profile picture)
                         echo '</div>';
                         echo '</li>';
                     }
@@ -270,7 +258,6 @@ button[type="submit"] i.fab.fa-telegram-plane {
             </ul>
         </div>
 
-        <!-- Right Chat Area (Initially Empty) -->
         <div class="chat-area">
             <!-- Messages will be displayed here -->
             <div>
@@ -296,109 +283,6 @@ button[type="submit"] i.fab.fa-telegram-plane {
 
 
 
-<!-- <script>
-        function scrollToBottom() {
-            var chatBox = document.getElementById('chat-box');
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        const customerItems = document.querySelectorAll('.customer-item');
-        const chatBox = document.getElementById('chat-box');
-        var customerId = <?php echo $customerId; ?>;
-        
-        function sendMessage(customerId) {
-            var messageInput = document.getElementById('message-input');
-            var message = messageInput.value;
-
-            if (message !== '') {
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'insert-chat.php', true);
-                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-                // Combine both parameters in a single string
-                var data = 'customer_id=' + customerId + '&message=' + message;
-
-                xhr.onload = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            // Message sent successfully, you can handle the response here if needed
-                            console.log("Success");
-                            console.log(xhr.responseText);
-                            // Update the chat-box with the new message
-                            chatBox.innerHTML += '<div class="outgoing-message"><p>' + message + '</p></div>';
-                            scrollToBottom(); // Optionally, scroll to the bottom of the chat
-                        } else {
-                            // Error sending the message, handle it as needed
-                            console.error('Error sending message. Status code: ' + xhr.status);
-                        }
-                    }
-                };
-
-                xhr.send(data); // Send the combined data
-                // Clear the input field
-                messageInput.value = '';
-            }
-        }
-
-        // JavaScript to load chat when a customer is clicked
-        customerItems.forEach((customerItem) => {
-            customerItem.addEventListener('click', () => {
-        const customerId = customerItem.querySelector('a').getAttribute('href').split('=')[1][0];
-        console.log('Customer ID: ' + customerId);
-        
-        const header_namebox = document.querySelector('.details');
-        const customerName = customerItem.querySelector('a').textContent;
-        header_namebox.innerHTML = '<span>&nbsp;&nbsp;' + customerName + '</span>';
-
-        // Clear the chat box before loading new content
-        chatBox.innerHTML = '<p>Loading chat...</p>'; // Display a loading message
-
-        // Function to load chat messages for the selected customer
-        function loadChat() {
-            // Send an AJAX request to get-chat.php to fetch chat messages for the selected customer
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'get-chat.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.onload = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        var data = xhr.responseText;
-                        chatBox.innerHTML = data; // Update the chat-box with fetched chat messages
-                        scrollToBottom(); // Optionally, scroll to the bottom of the chat
-                    } else {
-                        chatBox.innerHTML = '<p>Error loading chat.</p>'; // Display an error message
-                    }
-                }
-            };
-
-            xhr.send('customer_id=' + customerId);
-        }
-
-        // Load chat initially
-        loadChat();
-
-        // Set up an interval to periodically load chat messages
-        const chatInterval = setInterval(loadChat, 1000); // Adjust the interval as needed (e.g., every 5 seconds)
-
-        // Function to stop the chat loading interval when needed (e.g., when seller switches customers)
-        function stopChatInterval() {
-            clearInterval(chatInterval);
-        }
-
-        // Event listener to stop the chat loading interval when seller switches customers
-        customerItem.addEventListener('mouseleave', stopChatInterval);
-        document.getElementById('message-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            sendMessage(customerId);
-        });
-    });
-});
-        document.getElementById('message-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            sendMessage(customerId);
-        });
-</script> -->
-
 <script>
     function scrollToBottom() {
         var chatBox = document.getElementById('chat-box');
@@ -418,27 +302,23 @@ button[type="submit"] i.fab.fa-telegram-plane {
             xhr.open('POST', 'insert-chat.php', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-            // Combine both parameters in a single string
+            // Combining both parameters in a single string
             var data = 'customer_id=' + customerId + '&message=' + message;
 
             xhr.onload = function () {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
-                        // Message sent successfully, you can handle the response here if needed
                         console.log("Success");
                         console.log(xhr.responseText);
-                        // Update the chat-box with the new message
                         chatBox.innerHTML += '<div class="outgoing-message"><p>' + message + '</p></div>';
-                        scrollToBottom(); // Optionally, scroll to the bottom of the chat
+                        scrollToBottom();
                     } else {
-                        // Error sending the message, handle it as needed
                         console.error('Error sending message. Status code: ' + xhr.status);
                     }
                 }
             };
 
-            xhr.send(data); // Send the combined data
-            // Clear the input field
+            xhr.send(data);
             messageInput.value = '';
         }
     }
@@ -446,19 +326,17 @@ button[type="submit"] i.fab.fa-telegram-plane {
     // JavaScript to load chat when a customer is clicked
     customerItems.forEach((customerItem) => {
         customerItem.addEventListener('click', () => {
-            customerId = customerItem.querySelector('a').getAttribute('href').split('=')[1]; // Set customerId
+            customerId = customerItem.querySelector('a').getAttribute('href').split('=')[1]; 
             console.log('Customer ID: ' + customerId);
 
             const header_namebox = document.querySelector('.details');
             const customerName = customerItem.querySelector('a').textContent;
             header_namebox.innerHTML = '<span>&nbsp;&nbsp;' + customerName + '</span>';
 
-            // Clear the chat box before loading new content
-            chatBox.innerHTML = '<p>Loading chat...</p>'; // Display a loading message
+            chatBox.innerHTML = '<p>Loading chat...</p>'; 
 
             // Function to load chat messages for the selected customer
             function loadChat() {
-                // Send an AJAX request to get-chat.php to fetch chat messages for the selected customer
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'get-chat.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -466,10 +344,10 @@ button[type="submit"] i.fab.fa-telegram-plane {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
                             var data = xhr.responseText;
-                            chatBox.innerHTML = data; // Update the chat-box with fetched chat messages
-                            scrollToBottom(); // Optionally, scroll to the bottom of the chat
+                            chatBox.innerHTML = data; 
+                            scrollToBottom(); 
                         } else {
-                            chatBox.innerHTML = '<p>Error loading chat.</p>'; // Display an error message
+                            chatBox.innerHTML = '<p>Error loading chat.</p>';
                         }
                     }
                 };
@@ -477,18 +355,14 @@ button[type="submit"] i.fab.fa-telegram-plane {
                 xhr.send('customer_id=' + customerId);
             }
 
-            // Load chat initially
             loadChat();
 
-            // Set up an interval to periodically load chat messages
-            const chatInterval = setInterval(loadChat, 1000); // Adjust the interval as needed (e.g., every 5 seconds)
+            const chatInterval = setInterval(loadChat, 1000);
 
-            // Function to stop the chat loading interval when needed (e.g., when seller switches customers)
             function stopChatInterval() {
                 clearInterval(chatInterval);
             }
 
-            // Event listener to stop the chat loading interval when seller switches customers
             customerItem.addEventListener('mouseleave', stopChatInterval);
         });
     });

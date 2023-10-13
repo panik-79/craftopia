@@ -18,7 +18,7 @@
                                 $countStartRecentView = 0;
                             }
                             $recentViewId = implode(",", $arrRecentView);
-                            echo "Recent View IDs: " . $recentViewId; // Add this line to debug
+                            echo "Recent View IDs: " . $recentViewId;
 
                             $recentViewRes = mysqli_query($con, "SELECT * FROM product WHERE id IN ($recentViewId) AND status=1");
                             while ($list = mysqli_fetch_assoc($recentViewRes)) {
@@ -60,7 +60,6 @@
         </div>
     </div>
 </section>
-<!-- End Recently Viewed Products -->
 
 <?php
 

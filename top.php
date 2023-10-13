@@ -32,8 +32,7 @@ if(isset($_SESSION['USER_LOGIN'])){
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
     <link rel="stylesheet" href="css/core.css">
     <link rel="stylesheet" href="css/shortcode/shortcodes.css">
     <link rel="stylesheet" href="style.css">
@@ -168,7 +167,7 @@ if(isset($_SESSION['USER_LOGIN'])){
                         <div class="col-md-12">
                             <div class="search__inner">
                                 <form action="search.php" method="get">
-                                    <input placeholder="Search here... " type="text" name="str">
+                                    <input placeholder="Search for a product here  " type="text" name="str">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -180,3 +179,6 @@ if(isset($_SESSION['USER_LOGIN'])){
                 </div>
             </div>
         </div>
+
+
+        <hr style="height:10px">

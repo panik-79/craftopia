@@ -31,7 +31,6 @@ if(isset($_GET['sort'])){
 		$sort_order=" order by product.id asc ";
 		$old_selected="selected";
 	}
-
 }
 
 if($cat_id>0){
@@ -46,25 +45,6 @@ if($cat_id>0){
 ?>
 <div class="body__overlay"></div>
         
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner">
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.php">Home</a>
-                                  <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Products</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area -->
         <!-- Start Product Grid -->
         <section class="htc__product__grid bg__white ptb--100">
             <div class="container">
@@ -75,14 +55,13 @@ if($cat_id>0){
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
                                     <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>','<?php echo SITE_PATH?>')" id="sort_product_id">
-                                        <option value="">Default softing</option>
+                                        <option value="">Sort</option>
                                         <option value="price_low" <?php echo $price_low_selected?>>Sort by price low to hight</option>
                                         <option value="price_high" <?php echo $price_high_selected?>>Sort by price high to low</option>
                                         <option value="new" <?php echo $new_selected?>>Sort by new first</option>
 										<option value="old" <?php echo $old_selected?>>Sort by old first</option>
                                     </select>
                                 </div>
-                               
                             </div>
                             <!-- Start Product View -->
                             <div class="row">
@@ -127,7 +106,5 @@ if($cat_id>0){
 				</div>
             </div>
         </section>
-        <!-- End Product Grid -->
-        <!-- End Banner Area -->
 		<input type="hidden" id="qty" value="1"/>
 <?php require('footer.php')?>        

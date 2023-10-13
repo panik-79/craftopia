@@ -19,13 +19,13 @@ if(isset($_GET['type']) && $_GET['type']!=''){
 		}else{
 			$status='0';
 		}
-		$update_status_sql="update product set status='$status' $condition1 where id='$id'";
+		$update_status_sql="update product set status='$status' $condition where id='$id'";
 		mysqli_query($con,$update_status_sql);
 	}
 	
 	if($type=='delete'){
 		$id=get_safe_value($con,$_GET['id']);
-		$delete_sql="delete from product where id='$id' $condition1";
+		$delete_sql="delete from product where id='$id' $condition";
 		mysqli_query($con,$delete_sql);
 	}
 }

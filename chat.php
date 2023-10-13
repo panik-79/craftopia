@@ -22,7 +22,7 @@
 <html lang="en">
 <head>
     <!-- Add your head content here -->
-    <link rel="stylesheet" type="text/css" href="chat.css"> <!-- Add your chat-specific CSS here -->
+    <link rel="stylesheet" type="text/css" href="chat.css">
 </head>
 <body>
     <div class="wrapper">
@@ -48,6 +48,3 @@
     <script src="chat.js"></script>
 </body>
 </html>
-
-</html>
-

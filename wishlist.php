@@ -11,80 +11,131 @@ $uid=$_SESSION['USER_ID'];
 
 $res=mysqli_query($con,"select product.name,product.id as pid,product.image,product.price,product.mrp,wishlist.id from product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'");
 ?>
+<style>
+    /* Style for the product list */
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
- <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner">
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.php">Home</a>
-                                  <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Wishlist</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area -->
-        <!-- cart-main-area start -->
-        <div class="cart-main-area ptb--100 bg__white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <form action="#">               
-                            <div class="table-content table-responsive">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="product-thumbnail">products</th>
-                                            <th class="product-name">name of products</th>
-                                            <th class="product-remove">Remove</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    while ($row = mysqli_fetch_assoc($res)) {
+    /* Style for each product */
+    .product {
+        display: flex;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
 
-                                        $product_url = 'product.php?id=' . $row['pid']; 
+    /* Style for the product thumbnail */
+    .product-thumbnail {
+        margin-right: 20px;
+    }
 
-                                        ?>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="<?php echo $product_url ?>"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $row['image'] ?>" width="130px" height="140px" /></a></td>
-                                            <td class="product-name"><a href="<?php echo $product_url ?>"><?php echo $row['name'] ?></a>
-                                                <ul class="pro__prize">
-                                                    <li>Rs.<?php echo $row['price'] ?></li>&nbsp;&nbsp;&nbsp;
-                                                    <li class="old__prize"><strike>Rs.<?php echo $row['mrp'] ?></strike></li>
-                                                </ul>
-                                            </td>
-                                            <td class="product-remove"><a href="wishlist.php?wishlist_id=<?php echo $row['id'] ?>"><i class="icon-trash icons"></i></a></td>
-                                            <td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $row['pid']?>','add')">Add to Cart</a></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
+    .product-thumbnail img {
+        max-width: 130px;
+        max-height: 140px;
+    }
 
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="buttons-cart--inner">
-                                        <div class="buttons-cart">
-                                            <a href="<?php echo SITE_PATH?>">Continue Shopping</a>
-                                        </div>
-                                        <div class="buttons-cart checkout--btn">
-                                            <a href="<?php echo SITE_PATH?>checkout.php">checkout</a>
-                                        </div>
+    /* Style for the product details */
+    .product-details {
+        flex: 1;
+    }
+
+    /* Style for the product name */
+    .product-name a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+    /* Style for the price and old price */
+    .pro__prize li {
+        display: inline;
+        margin-right: 10px;
+    }
+
+    .product-actions{
+        margin-top: 40px;
+    }
+
+    /* Style for product actions */
+    .product-actions a {
+        text-decoration: none;
+        color: #555;
+        margin-right: 10px;
+    }
+
+    /* Style for buttons cart */
+    .buttons-cart--inner {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .buttons-cart a {
+        display: inline-block;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .buttons-cart a:hover {
+        background-color: #555;
+    }
+
+</style>
+<div class="cart-main-area ptb--100 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <form action="#">
+                    <div class="product-list">
+                        <?php
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            $product_url = 'product.php?id=' . $row['pid'];
+                            ?>
+
+                            <div class="product">
+                                <div class="product-thumbnail">
+                                    <a href="<?php echo $product_url ?>">
+                                        <img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $row['image'] ?>" width="130px" height="140px" />
+                                    </a>
+                                </div>
+                                <div class="product-details">
+                                    <div class="product-name">
+                                        <a href="<?php echo $product_url ?>"><?php echo $row['name'] ?></a>
+                                    </div>
+                                    <ul class="pro__prize">
+                                        <li>Rs.<?php echo $row['price'] ?></li>&nbsp;&nbsp;&nbsp;
+                                        <li class="old__prize"><strike>Rs.<?php echo $row['mrp'] ?></strike></li>
+                                    </ul>
+                                    <div class="product-actions">
+                                        <a href="wishlist.php?wishlist_id=<?php echo $row['id']?>"><i class="icon-trash icons"></i></a>
+                                        <a href="javascript:void(0)" onclick="manage_cart('<?php echo $row['pid']?>','add')">
+                                        Add to Cart
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </form> 
+
+                        <?php } ?>
+                    </div>
+                </form>
+                <div class="buttons-cart--inner">
+                    <div class="buttons-cart">
+                        <a href="<?php echo SITE_PATH?>">Continue Shopping</a>
+                    </div>
+                    <div class="buttons-cart checkout--btn">
+                        <a href="<?php echo SITE_PATH?>checkout.php">Checkout</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
         
 										
 <?php require('footer.php')?>        

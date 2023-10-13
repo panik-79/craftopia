@@ -41,7 +41,6 @@ if (isset($_POST['submit'])) {
         if (isset($_GET['id']) && $_GET['id'] != '') {
             $getData = mysqli_fetch_assoc($res);
             if ($id == $getData['id']) {
-                // Existing category name is being updated, which is allowed
             } else {
                 $msg = "Category already exists";
             }
@@ -52,10 +51,8 @@ if (isset($_POST['submit'])) {
 
     if ($msg == '') {
         if (isset($_GET['id']) && $_GET['id'] != '') {
-            // Update an existing category
             mysqli_query($con, "UPDATE categories SET categories='$categories', image='$image' WHERE id='$id'");
         } else {
-            // Insert a new category
             mysqli_query($con, "INSERT INTO categories(categories, image, status) VALUES ('$categories', '$image', '1')");
         }
         header('location: categories.php');
@@ -76,13 +73,11 @@ if (isset($_POST['submit'])) {
                                 <input type="text" name="categories" placeholder="Enter categories name" class="form-control" required value="<?php echo $categories ?>">
                             </div>
 
-                            <!-- Input field for uploading a new image -->
                             <div class="form-group">
                                 <label for="image" class="form-control-label">Category Image</label>
                                 <input type="file" name="image" class="form-control">
                             </div>
 
-                            <!-- Display the existing image -->
                             <?php if (!empty($existingImage)) : ?>
                                 <div class="form-group">
                                     <label for="existing-image" class="form-control-label">Existing Image</label>

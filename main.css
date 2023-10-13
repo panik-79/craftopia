@@ -270,15 +270,6 @@ input[type=datei] {
     padding: 14px
 }
 
-.table-condensed td,
-.table-condensed th {
-    font-size: 14px;
-    font-family: roboto, arial, helvetica neue, sans-serif;
-    font-weight: 400
-}
-
-
-
 input {
     outline: none;
     margin: 0;
@@ -407,7 +398,6 @@ background-position: center;
 	}
 	.title {
 		font-size: 16px;
-		/*margin-top:50px;*/
 	}
 	.box_left{
 		width:22% !important;
@@ -419,14 +409,14 @@ background-position: center;
     .vibrant_logo{width:50%;}
     .form_box{margin: auto;
     width: 80%;
-/* Add this CSS to your stylesheet */
+
 .dropdown-submenu:hover .dropdown-menu {
     display: block;
     position: absolute;
     left: 100%;
     top: 0;
-    background-color: #fff; /* You can change the background color */
-    border: 1px solid #ccc; /* You can adjust the border style */
+    background-color: #fff;
+    border: 1px solid #ccc;
     border-radius: 0;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     z-index: 1000;
@@ -439,13 +429,13 @@ background-position: center;
 
 .dropdown-submenu:hover .dropdown-menu li a {
     display: block;
-    color: #333; /* You can change the text color */
+    color: #333; 
     text-decoration: none;
-    font-size: 14px; /* You can adjust the font size */
+    font-size: 14px;
 }
 
 .dropdown-submenu:hover .dropdown-menu li a:hover {
-    background-color: #f0f0f0; /* You can change the background color on hover */
+    background-color: #f0f0f0;
 }
 
 }

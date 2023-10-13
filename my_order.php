@@ -8,73 +8,108 @@ if(!isset($_SESSION['USER_LOGIN'])){
 	<?php
 }
 ?>
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner">
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.php">Home</a>
-                                  <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Order Details</span>
-                                </nav>
+
+<style>
+
+.wishlist-content{
+    margin-left:50px;
+}
+
+/* Style for the wishlist cards */
+.wishlist-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Style for each wishlist card */
+.wishlist-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+}
+
+/* Style for the card header */
+.wishlist-card-header a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Style for item labels and values */
+.item-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.item-value {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Style for the card content */
+.wishlist-card-content {
+    font-size: 14px;
+}
+
+
+</style>
+
+<div class="wishlist-area ptb--100 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="wishlist-content">
+                    <form action="#">
+                        <div class="wishlist-cards">
+                            <?php
+                            $uid = $_SESSION['USER_ID'];
+                            $res = mysqli_query($con, "select `order`.*, order_status.name as order_status_str from `order`, order_status where `order`.user_id='$uid' and order_status.id=`order`.order_status");
+                            while ($row = mysqli_fetch_assoc($res)) {
+                            ?>
+                            <div class="wishlist-card">
+                                <div class="wishlist-card-header">
+                                    <a href="my_order_details.php?id=<?php echo $row['id']?>">Order #<?php echo $row['id']?></a>
+                                </div>
+                                <div class="wishlist-card-content">
+                                    <div class="wishlist-card-item">
+                                        <span class="item-label">Order Date:</span>
+                                        <span class="item-value"><?php echo $row['added_on']?></span>
+                                    </div>
+                                    <div class="wishlist-card-item">
+                                        <span class="item-label">Address:</span>
+                                        <span class="item-value">
+                                            <?php echo $row['address']?><br>
+                                            <?php echo $row['city']?><br>
+                                            <?php echo $row['pincode']?>
+                                        </span>
+                                    </div>
+                                    <div class="wishlist-card-item">
+                                        <span class="item-label">Payment Type:</span>
+                                        <span class="item-value"><?php echo $row['payment_type']?></span>
+                                    </div>
+                                    <div class="wishlist-card-item">
+                                        <span class="item-label">Payment Status:</span>
+                                        <span class="item-value"><?php echo ucfirst($row['payment_status'])?></span>
+                                    </div>
+                                    <div class="wishlist-card-item">
+                                        <span class="item-label">Order Status:</span>
+                                        <span class="item-value"><?php echo $row['order_status_str']?></span>
+                                    </div>
+                                </div>
                             </div>
+                            <?php } ?>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- End Bradcaump area -->
-        <!-- cart-main-area start -->
-        <div class="wishlist-area ptb--100 bg__white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="wishlist-content">
-                            <form action="#">
-                                <div class="wishlist-table table-responsive">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="product-thumbnail">Order</th>
-                                                <th class="product-name"><span class="nobr">Order Date</span></th>
-                                                <th class="product-price"><span class="nobr"> Address </span></th>
-                                                <th class="product-stock-stauts"><span class="nobr"> Payment Type </span></th>
-												<th class="product-stock-stauts"><span class="nobr"> Payment Status </span></th>
-												<th class="product-stock-stauts"><span class="nobr"> Order Status </span></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-											<?php
-											$uid=$_SESSION['USER_ID'];
-											$res=mysqli_query($con,"select `order`.*,order_status.name as order_status_str from `order`,order_status where `order`.user_id='$uid' and order_status.id=`order`.order_status");
-											while($row=mysqli_fetch_assoc($res)){
-											?>
-                                            <tr>
-												<td class="product-add-to-cart"><a href="my_order_details.php?id=<?php echo $row['id']?>"> <?php echo $row['id']?></a></td>
-                                                <td class="product-name"><?php echo $row['added_on']?></td>
-                                                <td class="product-name">
-												<?php echo $row['address']?><br/>
-												<?php echo $row['city']?><br/>
-												<?php echo $row['pincode']?>
-												</td>
-												<td class="product-name"><?php echo $row['payment_type']?></td>
-												<td class="product-name"><?php echo ucfirst($row['payment_status'])?></td>
-												<td class="product-name"><?php echo $row['order_status_str']?></td>
-                                                
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                        
-                                    </table>
-                                </div>  
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
+
         
         						
 <?php require('footer.php')?>        

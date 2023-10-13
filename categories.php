@@ -55,11 +55,11 @@ if($cat_id>0){
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
                                     <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>','<?php echo SITE_PATH?>')" id="sort_product_id">
-                                        <option value="">Sort</option>
-                                        <option value="price_low" <?php echo $price_low_selected?>>Sort by price low to hight</option>
-                                        <option value="price_high" <?php echo $price_high_selected?>>Sort by price high to low</option>
-                                        <option value="new" <?php echo $new_selected?>>Sort by new first</option>
-										<option value="old" <?php echo $old_selected?>>Sort by old first</option>
+                                        <option value="">Sort by</option>
+                                        <option value="price_low" <?php echo $price_low_selected?>>Price low to high</option>
+                                        <option value="price_high" <?php echo $price_high_selected?>>Price high to low</option>
+                                        <option value="new" <?php echo $new_selected?>>Newest first</option>
+										<option value="old" <?php echo $old_selected?>>Oldest first</option>
                                     </select>
                                 </div>
                             </div>

@@ -1,43 +1,3 @@
-/*-----------------------------------------------------------------------------------
-
-  Template Name: Asbab eCommerce HTML5 Template.
-  Template URI: #
-  Description: Asbab is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
-  Author: HasTech
-  Author URI: https://themeforest.net/user/hastech/portfolio
-  Version: 1.0
-
------------------------------------------------------------------------------------*/
-
-/*-------------------------------
-[  Table of contents  ]
----------------------------------
-    01. jQuery MeanMenu
-    02. wow js active
-    03. Product  Masonry (width)
-    04. Sticky Header
-    05. ScrollUp
-    06. Search Bar
-    07. Shopping Cart Area
-    08. Filter Area
-    09. Toogle Menu   
-    10. User Menu 
-    11. Menu 
-    12. Menu Dropdown
-    13. Overlay Close
-    14. Testimonial Image Slider As Nav
-    15. Brand Area
-    16. Price Slider Active
-    17. Accordion
-    18. Ship to another
-    19. Payment credit card    
-    20 Slider Activations
-
-
-
-/*--------------------------------
-[ End table content ]
------------------------------------*/
 
 
 (function($) {
@@ -54,11 +14,7 @@
         meanRevealPosition: "right",
     });
 
-/*-------------------------------------------
-    02. wow js active
---------------------------------------------- */
 
-    new WOW().init();
 
 
 /*-------------------------------------------

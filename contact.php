@@ -15,7 +15,7 @@ require('top.php');
 }
 
 .faq__accordion .btn-link:hover {
-    color: #c43b68; /* Change this color to your preferred highlight color */
+    color: #c43b68;
     text-decoration: none;
 }
 
@@ -32,10 +32,8 @@ require('top.php');
 }
 
 .faq__accordion .btn-link.active {
-    color: #c43b68; /* Change this color to match the highlight color */
-}
+    color: #c43b68; 
 
-/* Optional: Add some styling for the FAQ header */
 .faq__header {
     text-align: center;
     margin-bottom: 40px;
@@ -47,7 +45,6 @@ require('top.php');
     color: #333;
 }
 
-/* Optional: Adjust spacing and margin for the FAQ section */
 .faq__area {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -95,72 +92,70 @@ require('top.php');
         <!-- End Contact Area -->
 <!-- Start FAQ Area -->
 
-<section class="faq__area pb--120 bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
-    <div class="container">
-        <div class="faq__header">
-            <h2>Frequently Asked Questions</h2>
-        </div><br><br>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="faq__wrap">
-                    <div class="faq__accordion" id="accordion">
-                        <!-- FAQ Item 1 -->
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Question : What payment methods do you accept?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="card-body">
-                                     We accept payments through PayU and Cash On Delivery
+        <section class="faq__area pb--120 bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
+            <div class="container">
+                <div class="faq__header">
+                    <h2>Frequently Asked Questions</h2>
+                </div><br><br>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="faq__wrap">
+                            <div class="faq__accordion" id="accordion">
+                                
+                                <!-- FAQ Item 1 -->
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Question : What payment methods do you accept?
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            We accept payments through PayU and Cash On Delivery
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- FAQ Item 2 -->
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Question :  Are the handicraft items handmade?
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Yes, all of our handicraft items are handmade by skilled artisans. We take pride in supporting traditional craftsmanship and providing you with unique, one-of-a-kind pieces.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- FAQ Item 3 -->
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Question :  Can I cancel my order after it's been placed?
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            You can request to cancel your order within 24 hours of placing it. Please contact our customer support team as soon as possible with your order details. After 24 hours, we may have already processed your order for shipment.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- FAQ Item 2 -->
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Question :  Are the handicraft items handmade?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                     Yes, all of our handicraft items are handmade by skilled artisans. We take pride in supporting traditional craftsmanship and providing you with unique, one-of-a-kind pieces.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- FAQ Item 3 -->
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Question :  Can I cancel my order after it's been placed?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                     You can request to cancel your order within 24 hours of placing it. Please contact our customer support team as soon as possible with your order details. After 24 hours, we may have already processed your order for shipment.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Add more FAQ items as needed -->
-
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- End FAQ Area -->
+        </section>
+
 <script>
     $(document).ready(function () {
         $('.collapse').on('show.bs.collapse', function () {

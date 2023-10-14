@@ -21,7 +21,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Add your head content here -->
     <link rel="stylesheet" type="text/css" href="chat.css">
 </head>
 <body>

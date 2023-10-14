@@ -11,7 +11,7 @@ if (isset($_SESSION["USER_ID"])) {
     $incoming_id = intval($_POST['incomingid']);
     $message = $_POST['message'];
 
-    // Output JavaScript with the extracted values
+
     echo '<script>';
     echo 'var incoming_id = ' . $incoming_id . ';';
     echo 'var message = "' . $message . '";';
@@ -25,7 +25,7 @@ if (isset($_SESSION["USER_ID"])) {
                 // Message inserted successfully
                 echo json_encode(array('status' => 'success', 'message' => $message));
             } else {
-                // Handle the error here
+                // Handling the error here
                 echo json_encode(array('status' => 'error', 'message' => 'Failed to insert message.'));
             }
         }

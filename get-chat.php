@@ -3,10 +3,9 @@ include_once "connection.inc.php";
 
 if(isset($_SESSION["USER_ID"]) && isset($_POST['incomingid'])){
     $outgoing_id = $_SESSION["USER_ID"];
-    $incoming_id = intval($_POST['incomingid']); // Validate and sanitize incoming_id
+    $incoming_id = intval($_POST['incomingid']);
     $output = "";
 
-    // Use prepared statements to prevent SQL injection
     $sql = "SELECT * FROM messages 
             LEFT JOIN users ON users.id = messages.outgoing_msg_id
             WHERE (outgoing_msg_id = ? AND incoming_msg_id = ?)
@@ -19,7 +18,7 @@ if(isset($_SESSION["USER_ID"]) && isset($_POST['incomingid'])){
 
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
-            // Escape the message content to prevent XSS
+
             $message = htmlspecialchars($row['msg']);
             
             if($row['outgoing_msg_id'] == $outgoing_id){

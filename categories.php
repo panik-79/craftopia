@@ -45,7 +45,6 @@ if($cat_id>0){
 ?>
 <div class="body__overlay"></div>
         
-        <!-- Start Product Grid -->
         <section class="htc__product__grid bg__white ptb--100" style="background-image: url('media/background.jpg'); background-size: cover;">
             <div class="container">
                 <div class="row">
@@ -63,14 +62,14 @@ if($cat_id>0){
                                     </select>
                                 </div>
                             </div>
-                            <!-- Start Product View -->
+
                             <div class="row">
                                 <div class="shop__grid__view__wrap">
                                     <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
                                         <?php
 										foreach($get_product as $list){
 										?>
-										<!-- Start Single Category -->
+			
 										<div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
 											<div class="category">
 												<div class="ht__cat__thumb">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2023 at 10:22 AM
+-- Generation Time: Oct 14, 2023 at 02:43 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -47,7 +47,8 @@ INSERT INTO `admin_users` (`id`, `username`, `password`, `role`, `email_id`, `co
 (9, 'kunal', 'kunal', 1, 'kunal@gmail.com', '1111111111', 1),
 (10, 'Shreya', 'shreyav', 1, 'shreyav09@gmail.com', '1234565432', 1),
 (12, 'Isha', 'isha', 1, 'isha@gmail.com', '1233211231', 1),
-(15, 'Priyanka', '12345', 1, 'priyanka@gmail.com', '1234567890', 1);
+(15, 'Priyanka', '12345', 1, 'priyanka@gmail.com', '1234567890', 1),
+(16, 'Rohan', 'rohan', 1, 'rohan@gmail.com', '1234554678', 1);
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,8 @@ INSERT INTO `messages` (`msg_id`, `incoming_msg_id`, `outgoing_msg_id`, `msg`) V
 (198, 3, 9, 'Hi Pujan'),
 (199, 12, 3, 'tirrsklfr'),
 (200, 3, 12, 'hii 🌻'),
-(201, 12, 3, 'jigjgret');
+(201, 12, 3, 'jigjgret'),
+(202, 15, 3, 'Hiii');
 
 -- --------------------------------------------------------
 
@@ -172,12 +174,21 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `user_id`, `address`, `city`, `pincode`, `payment_type`, `total_price`, `payment_status`, `order_status`, `txnid`, `mihpayid`, `payu_status`, `added_on`) VALUES
-(2, 4, 'indore', 'mp', 452003, 'COD', 345, 'Success', 5, '09486ca6da6eb38a508d', '', '', '2023-09-17 02:26:09'),
 (3, 4, 'Pune', 'pune/M.H.', 123456, 'payu', 249, 'pending', 4, '11a52093a333474f6feb', '', '', '2023-09-17 04:32:38'),
 (4, 4, 'fewfsf', 'fsfs', 222345, 'COD', 948, 'pending', 4, '5a2be88e99ffc55f1202', '', '', '2023-09-17 07:11:18'),
 (5, 4, 'jcsad', 'mde', 222222, 'COD', 345, 'pending', 1, 'a26817356f81f7f34afc', '', '', '2023-09-23 09:04:16'),
 (6, 4, 'dewew', 'dde3', 123454, 'COD', 799, 'pending', 1, '4d9c9f0e110f4f924cfd', '', '', '2023-09-23 09:44:12'),
-(7, 4, 'vugyu', 'dgfff', 123432, 'COD', 23994, 'pending', 1, 'b2210357df1d3d2871e1', '', '', '2023-09-24 07:15:32');
+(7, 4, 'vugyu', 'dgfff', 123432, 'COD', 23994, 'pending', 1, 'b2210357df1d3d2871e1', '', '', '2023-09-24 07:15:32'),
+(8, 3, 'Indore', 'Indore, M.P.', 452003, 'COD', 149, 'pending', 1, '6b60aef4426331a641a0', '', '', '2023-10-09 11:11:57'),
+(9, 3, '173 , Masaji Hotel , Bhawani Road , Sanawad', 'Sanawad', 451111, 'COD', 1145, 'pending', 1, 'a722898854ee14bc9e89', '', '', '2023-10-13 05:11:56'),
+(10, 3, 'Raghuwanshi Hostel 26 Netaji Subash Marg Snehlataganj', 'Indore', 452007, 'COD', 149, 'pending', 1, '4e84b9b6ac35504d4531', '', '', '2023-10-13 08:18:36'),
+(11, 3, '173 , Masaji Hotel , Bhawani Road , Sanawad', 'Sanawad', 451111, 'COD', 809, 'pending', 1, '8a70c019e121d82c679a', '', '', '2023-10-13 08:19:57'),
+(12, 3, 'Raghuwanshi Hostel 26 Netaji Subash Marg Snehlataganj', 'Indore', 452007, 'payu', 1356, 'pending', 1, '9d0b0bb0637a73a7de7c', '', '', '2023-10-14 04:49:55'),
+(13, 3, '173 , Masaji Hotel , Bhawani Road , Sanawad', 'Sanawad', 451111, 'COD', 560, 'Success', 5, '27c97557e2cbb165d7bd', '', '', '2023-10-14 02:11:43'),
+(14, 3, 'Raghuwanshi Hostel 26 Netaji Subash Marg Snehlataganj', 'Indore', 452007, 'COD', 1120, 'Success', 5, 'fc16305fb1f5e4a789e2', '', '', '2023-10-14 02:12:27'),
+(15, 3, '173 , Masaji Hotel , Bhawani Road , Sanawad', 'Sanawad', 451111, 'COD', 1680, 'Success', 5, 'a048288b58a47ef63ffa', '', '', '2023-10-14 02:13:36'),
+(16, 3, 'Raghuwanshi Hostel 26 Netaji Subash Marg Snehlataganj', 'Indore', 452007, 'COD', 2800, 'Success', 5, '376faf3b9a13776fce30', '', '', '2023-10-14 02:14:43'),
+(17, 3, 'Raghuwanshi Hostel 26 Netaji Subash Marg Snehlataganj', 'Indore', 452007, 'COD', 2240, 'Success', 5, '46ae882569748b0e5a29', '', '', '2023-10-14 02:17:08');
 
 -- --------------------------------------------------------
 
@@ -202,7 +213,22 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `qty`, `price`) VALU
 (5, 4, 22, 1, 249),
 (6, 4, 17, 1, 699),
 (8, 6, 26, 1, 799),
-(9, 7, 11, 6, 3999);
+(9, 7, 11, 6, 3999),
+(10, 8, 27, 1, 149),
+(11, 9, 22, 4, 249),
+(12, 9, 27, 1, 149),
+(13, 10, 27, 1, 149),
+(14, 11, 25, 1, 560),
+(15, 11, 22, 1, 249),
+(16, 12, 23, 1, 249),
+(17, 12, 22, 1, 249),
+(18, 12, 25, 1, 560),
+(19, 12, 27, 2, 149),
+(20, 13, 25, 1, 560),
+(21, 14, 25, 2, 560),
+(22, 15, 25, 3, 560),
+(23, 16, 25, 5, 560),
+(24, 17, 25, 4, 560);
 
 -- --------------------------------------------------------
 
@@ -252,7 +278,6 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `categories_id`, `name`, `mrp`, `price`, `qty`, `image`, `short_desc`, `description`, `best_seller`, `status`, `added_by`) VALUES
-(10, 6, 'Demo Pot 1', 1000, 899, 5, '811511954_p2.jpg', 'Short Desc of demo pot 1', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore quos alias neque saepe corporis excepturi dolores maxime ducimus voluptatibus reiciendis optio doloremque incidunt amet assumenda quis accusantium, ipsam aperiam culpa aspernatur a inventore natus quo. Similique quam mollitia error quod necessitatibus ducimus officia quibusdam, modi corporis quia eveniet enim odio.', 0, 1, 0),
 (11, 6, 'Demo Pot 2', 5000, 3999, 2, '710748932_p4.jpg', 'Short Desc. of demo pot 2', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore quos alias neque saepe corporis excepturi dolores maxime ducimus voluptatibus reiciendis optio doloremque incidunt amet assumenda quis accusantium, ipsam aperiam culpa aspernatur a inventore natus quo. Similique quam mollitia error quod necessitatibus ducimus officia quibusdam, modi corporis quia eveniet enim odio.', 0, 1, 0),
 (12, 7, 'Crochet Product 1', 499, 399, 5, '223321387_cro1.jpg', 'Crochet Product 1 Short demo Description', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolore sequi eaque veniam magnam officiis ducimus delectus fugit harum placeat perferendis possimus, voluptates, aperiam nostrum! Consequuntur sint, perspiciatis qui ad iusto quod ab reiciendis provident architecto. Ducimus nostrum corrupti fugit. Aut accusantium corporis quasi dolore voluptas dicta? Doloribus, nihil. Dolore.', 1, 1, 0),
 (13, 5, 'Wooden Demo 1', 4999, 2999, 9, '615728551_wood5.jpg', 'Short demo description', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolore sequi eaque veniam magnam officiis ducimus delectus fugit harum placeat perferendis possimus, voluptates, aperiam nostrum! Consequuntur sint, perspiciatis qui ad iusto quod ab reiciendis provident architecto. Ducimus nostrum corrupti fugit. Aut accusantium corporis quasi dolore voluptas dicta? Doloribus, nihil. Dolore.', 1, 1, 0),
@@ -266,9 +291,9 @@ INSERT INTO `product` (`id`, `categories_id`, `name`, `mrp`, `price`, `qty`, `im
 (21, 5, 'Wooden Demo 5', 299, 249, 8, '211248349_wood3.jpg', 'Short demo description', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolore sequi eaque veniam magnam officiis ducimus delectus fugit harum placeat perferendis possimus, voluptates, aperiam nostrum! Consequuntur sint, perspiciatis qui ad iusto quod ab reiciendis provident architecto. Ducimus nostrum corrupti fugit. Aut accusantium corporis quasi dolore voluptas dicta? Doloribus, nihil. Dolore.', 0, 1, 0),
 (22, 5, 'Wooden Demo 6', 299, 249, 8, '165851565_wood4.jpg', 'Short demo description', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolore sequi eaque veniam magnam officiis ducimus delectus fugit harum placeat perferendis possimus, voluptates, aperiam nostrum! Consequuntur sint, perspiciatis qui ad iusto quod ab reiciendis provident architecto. Ducimus nostrum corrupti fugit. Aut accusantium corporis quasi dolore voluptas dicta? Doloribus, nihil. Dolore.', 0, 1, 0),
 (23, 7, 'Crochet Product 6', 499, 249, 9, '667890296_cro3.jpeg', 'Short demo description', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolore sequi eaque veniam magnam officiis ducimus delectus fugit harum placeat perferendis possimus, voluptates, aperiam nostrum! Consequuntur sint, perspiciatis qui ad iusto quod ab reiciendis provident architecto. Ducimus nostrum corrupti fugit. Aut accusantium corporis quasi dolore voluptas dicta? Doloribus, nihil. Dolore.', 0, 1, 0),
-(25, 6, 'abc', 600, 560, 60, '860138412_Screenshot (71).png', 'hyh', 'szs', 0, 0, 15),
-(26, 7, 'Crochettt', 900, 799, 3, '921956986_Screenshot 2023-06-08 202548.png', 'cdscd', 'ewde', 0, 1, 12),
-(27, 5, 'Demo Product', 199, 149, 5, '872050674_me.jpg', 'ngjrgr', 'egejgte', 0, 0, 9),
+(25, 6, 'abc', 600, 560, 60, '860138412_Screenshot (71).png', 'hyh', 'szs', 0, 1, 15),
+(26, 7, 'Crochettt', 900, 799, 3, '921956986_Screenshot 2023-06-08 202548.png', 'cdscd', 'ewde', 0, 0, 12),
+(27, 5, 'Demo Product', 199, 149, 5, '838934992_vlc_ss_00001.png', 'ngjrgr', 'egejgte', 0, 1, 9),
 (28, 7, 'Crochettt', 899, 799, 4, '159774364_Default.jpg', 'njj', 'guuffv', 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -292,10 +317,8 @@ CREATE TABLE `product_review` (
 --
 
 INSERT INTO `product_review` (`id`, `product_id`, `user_id`, `rating`, `review`, `status`, `added_on`) VALUES
-(20, 22, 4, 'Fantastic', 'Excellent Product !', 1, '2023-09-18 10:37:07'),
-(21, 22, 3, 'Very Good', 'Absolutely loved it', 1, '2023-09-18 10:38:30'),
-(24, 17, 4, 'Very Good', 'Excellent Product !\r\nI really loved it', 1, '2023-09-25 01:41:40'),
-(25, 22, 4, 'Fantastic', 'abcd', 1, '2023-09-27 07:40:24');
+(27, 22, 3, '★★★★★', 'Excellent', 1, '2023-10-13 08:37:14'),
+(28, 25, 6, '★★★★★', 'Mast !', 1, '2023-10-14 08:44:45');
 
 -- --------------------------------------------------------
 
@@ -317,9 +340,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `mobile`, `added_on`) VALUES
-(3, 'Pujan Parekh', 'pujan111', 'pujan@gmail.com', '9522234236', '2023-09-03 06:26:31'),
+(3, 'Pujan Jain', 'pujan', 'pujan@gmail.com', '9522234236', '2023-09-03 06:26:31'),
 (4, 'Shreya', 'shreya111', 'shreya@gmail.com', '3209832', '2023-09-04 01:29:57'),
-(5, 'Kaushal Patel', 'kaushal111', 'kaushal@gmail.com', '1234554321', '2023-10-07 11:30:59');
+(5, 'Kaushal Patel', 'kaushal111', 'kaushal@gmail.com', '1234554321', '2023-10-07 11:30:59'),
+(6, 'Ani', 'aniket', 'aniketbandicdf@gmail.com', '1234543210', '2023-10-14 08:43:46');
 
 -- --------------------------------------------------------
 
@@ -363,13 +387,14 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`id`, `user_id`, `product_id`, `added_on`) VALUES
-(20, 3, 12, '2023-09-04 02:23:20'),
-(21, 3, 19, '2023-09-04 02:23:22'),
 (31, 4, 11, '2023-09-23 09:45:20'),
-(32, 4, 10, '2023-09-23 09:45:23'),
 (33, 4, 13, '2023-09-23 10:51:25'),
 (34, 4, 20, '2023-09-23 11:36:11'),
-(35, 4, 23, '2023-09-25 08:57:25');
+(35, 4, 23, '2023-09-25 08:57:25'),
+(45, 3, 25, '2023-10-13 06:53:00'),
+(46, 3, 22, '2023-10-13 06:53:14'),
+(47, 3, 23, '2023-10-13 07:24:47'),
+(48, 3, 27, '2023-10-13 07:24:59');
 
 --
 -- Indexes for dumped tables
@@ -465,7 +490,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -483,19 +508,19 @@ ALTER TABLE `contact_us`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -513,13 +538,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `product_review`
 --
 ALTER TABLE `product_review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `videos`
@@ -531,7 +556,7 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables

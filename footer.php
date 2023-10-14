@@ -39,8 +39,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Footer Widget -->
-                        <!-- Start Single Footer Widget -->
                         <div class="col-md-3 col-sm-6 col-xs-12 xmt-40 smt-40">
                             <div class="footer">
                                         <div class="send__btn">
@@ -81,7 +79,6 @@
     <script src="js/plugins.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/waypoints.min.js"></script>
-    <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
 	<script src="js/custom.js"></script>
 </body>

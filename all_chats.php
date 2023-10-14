@@ -325,7 +325,7 @@ $result = mysqli_stmt_get_result($stmt);
         const sellerItems = document.querySelectorAll('.seller-item');
         const chatBox = document.getElementById('chat-box');
         let chatInterval;
-        let selectedSellerId; // Store the incomingId of the selected seller
+        let selectedSellerId; 
 
         function sendMessage() {
             console.log('Incoming ID in sendmsg is : ' + selectedSellerId);
@@ -344,19 +344,19 @@ $result = mysqli_stmt_get_result($stmt);
                 xhr.onload = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
-                            // Message sent successfully, you can handle the response here if needed
+                            
                             console.log("Success");
                             console.log(xhr.responseText);
                         } else {
-                            // Error sending the message, handle it as needed
+                            
                             console.error('Error sending message. Status code: ' + xhr.status);
                         }
                     }
                 };
                 console.log('Incoming ID before xhr send data is : ' + selectedSellerId);
                 
-                xhr.send(data); // Send the combined data
-                // Clear the input field
+                xhr.send(data);
+
                 messageInput.value = '';
             }
         }
@@ -364,7 +364,7 @@ $result = mysqli_stmt_get_result($stmt);
         // JavaScript to load chat when a seller is clicked
         sellerItems.forEach((sellerItem) => {
             sellerItem.addEventListener('click', () => {
-                selectedSellerId = sellerItem.querySelector('a').getAttribute('data-incoming-id'); // Update the selected seller's incomingId
+                selectedSellerId = sellerItem.querySelector('a').getAttribute('data-incoming-id'); 
 
                 // Clear the chat loading interval for the previous seller
                 clearInterval(chatInterval);
@@ -374,11 +374,11 @@ $result = mysqli_stmt_get_result($stmt);
                 header.innerHTML = '<h2>&nbsp;&nbsp;' + sellerName + '</h2>';
 
                 // Clear the chat box before loading new content
-                chatBox.innerHTML = '<p>Loading chat...</p>'; // Display a loading message
+                chatBox.innerHTML = '<p>Loading chat...</p>';
 
                 // Function to load chat messages for the selected seller
                 function loadChat() {
-                    // Send an AJAX request to get-chat.php to fetch chat messages for the selected seller
+                    
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', 'get-chat.php', true);
                     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -386,10 +386,10 @@ $result = mysqli_stmt_get_result($stmt);
                         if (xhr.readyState === XMLHttpRequest.DONE) {
                             if (xhr.status === 200) {
                                 var data = xhr.responseText;
-                                chatBox.innerHTML = data; // Update the chat-box with fetched chat messages
-                                scrollToBottom(); // Optionally, scroll to the bottom of the chat
+                                chatBox.innerHTML = data; 
+                                scrollToBottom(); 
                             } else {
-                                chatBox.innerHTML = '<p>Error loading chat.</p>'; // Display an error message
+                                chatBox.innerHTML = '<p>Error loading chat.</p>';
                             }
                         }
                     };
@@ -399,8 +399,8 @@ $result = mysqli_stmt_get_result($stmt);
                 // Load chat initially
                 loadChat();
 
-                // Set up an interval to periodically load chat messages
-                chatInterval = setInterval(loadChat, 1000); // Adjust the interval as needed (e.g., every 5 seconds)
+                // Setting up an interval to periodically load chat messages
+                chatInterval = setInterval(loadChat, 1000);
 
                 document.getElementById('message-form').addEventListener('submit', function (e) {
                     e.preventDefault();

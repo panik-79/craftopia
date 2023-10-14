@@ -2,18 +2,16 @@
 require('../connection.inc.php');
 require('../functions.inc.php');
 
-// Check if a video ID is provided in the query parameter
+// Checking if a video ID is provided in the query parameter
 if (isset($_GET['video_id'])) {
     $video_id = intval($_GET['video_id']);
 
-    // Fetch video details from the database
     $video_query = "SELECT * FROM videos WHERE vid = $video_id";
     $video_result = mysqli_query($conn, $video_query);
 
     if ($video_row = mysqli_fetch_assoc($video_result)) {
         $video_title = $video_row['title'];
-        $video_src = '../media/videos/' . $video_row['video']; // Adjust the path to your video files
-      //   $video_poster = 'images/' . $video_row['poster']; // Adjust the path to your poster images
+        $video_src = '../media/videos/' . $video_row['video'];
         $video_description = $video_row['description'];
     } else {
         echo "Video not found!";
@@ -28,7 +26,6 @@ if (isset($_GET['video_id'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Add your HTML head content here -->
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +61,7 @@ if (isset($_GET['video_id'])) {
 <body>
    <header class="header">
       <section class="flex">
-         <a href="home.php" class="logo">Learn with Craftopia</a>
+         <a href="home.php" class="logo">Learn at Craftopia</a>
          <div class="icons">
             <div id="toggle-btn" class="fas fa-sun"></div>
          </div>
@@ -85,8 +82,6 @@ if (isset($_GET['video_id'])) {
          <p class="description"><?php echo $video_description; ?></p>
       </div>
    </section>
-
-   <!-- custom js file link -->
    <script src="script.js"></script>
 </body>
 </html>

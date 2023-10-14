@@ -1127,21 +1127,6 @@ aside.left-panel:hover {
     float: left
 }
 
-.right-panel .breadcrumbs {
-    float: left;
-    margin-top: 30px;
-    padding: 0 1.875em;
-    width: 100%
-}
-
-.right-panel .breadcrumbs .breadcrumbs-inner {
-    background-color: #fff
-}
-
-.right-panel .breadcrumbs .col-lg-8 .page-header {
-    float: left
-}
-
 .right-panel .page-header {
     min-height: 50px;
     margin: 0;
@@ -1153,19 +1138,6 @@ aside.left-panel:hover {
 .right-panel .page-header h1 {
     font-size: 18px;
     padding: 15px 0
-}
-
-.right-panel .page-header .breadcrumb {
-    margin: 0;
-    padding: 13.5px 0;
-    background: #fff;
-    text-transform: capitalize
-}
-
-.right-panel .page-header .breadcrumb>li+li:before {
-    padding: 0 5px;
-    color: #ccc;
-    content: "/\00a0"
 }
 
 .right-panel header.header {

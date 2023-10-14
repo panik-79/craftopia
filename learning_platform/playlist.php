@@ -2,11 +2,10 @@
 require('../connection.inc.php');
 require('../functions.inc.php');
 
-// Check if the category_id query parameter is set
+
 if (isset($_GET['category_id'])) {
     $category_id = intval($_GET['category_id']);
 
-    // Fetch the category details
     $category_query = "SELECT categories, image FROM categories WHERE id = $category_id";
     $category_result = mysqli_query($conn, $category_query);
 
@@ -14,7 +13,7 @@ if (isset($_GET['category_id'])) {
         $category_row = mysqli_fetch_assoc($category_result);
         if ($category_row) {
             $category_name = $category_row['categories'];
-            $category_image = $category_row['image']; // Retrieve the category image URL
+            $category_image = $category_row['image'];
         } else {
             echo "Category not found!";
             exit;
@@ -24,9 +23,8 @@ if (isset($_GET['category_id'])) {
         exit;
     }
 
-    $category_image_src = '../admin/category_images/' . $category_image; // Adjust the path to your category images
+    $category_image_src = '../admin/category_images/' . $category_image;
 
-    // Fetch all videos in the selected category
     $videos_query = "SELECT * FROM videos WHERE categories_id = $category_id";
     $videos_result = mysqli_query($conn, $videos_query);
 } else {
@@ -74,7 +72,7 @@ if (isset($_GET['category_id'])) {
 
 <header class="header">
    <section class="flex">
-      <a href="home.php" class="logo">Learn with Craftopia</a>
+      <a href="home.php" class="logo">Learn at Craftopia</a>
       <div class="icons">
          <div id="toggle-btn" class="fas fa-sun"></div>
       </div>

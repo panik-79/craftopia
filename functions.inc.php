@@ -58,4 +58,5 @@ function productQty($conn,$pid){
 	$row=mysqli_fetch_assoc($res);
 	return $row['qty'];
 }
+
 ?>

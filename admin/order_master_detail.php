@@ -18,7 +18,7 @@ if(isset($_POST['update_order_status'])){
 		  <div class="col-xl-12">
 			 <div class="card">
 				<div class="card-body">
-				   <h4 class="box-title">Order Detail </h4>
+				   <h4 class="box-title">Order Details</h4>
 				</div>
 				<div class="card-body--">
 				   <div class="table-stats order-table ov-h">
@@ -27,7 +27,7 @@ if(isset($_POST['update_order_status'])){
 									<tr>
 										<th class="product-thumbnail">Product Name</th>
 										<th class="product-thumbnail">Product Image</th>
-										<th class="product-name">Qty</th>
+										<th class="product-name">Quantity</th>
 										<th class="product-price">Price</th>
 										<th class="product-price">Total Price</th>
 									</tr>

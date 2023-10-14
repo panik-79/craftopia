@@ -7,7 +7,7 @@ require('top.inc.php');
 		  <div class="col-xl-12">
 			 <div class="card">
 				<div class="card-body">
-				   <h4 class="box-title">Order Master </h4>
+				   <h4 class="box-title">Orders</h4>
 				</div>
 				<div class="card-body--">
 				   <div class="table-stats order-table ov-h">
@@ -15,7 +15,7 @@ require('top.inc.php');
 							<thead>
 								<tr>
 									<th class="product-thumbnail">Order ID</th>
-									<th class="product-name"><span class="nobr">Product/Qty</span></th>
+									<th class="product-name"><span class="nobr">Product</span></th>
 									<th class="product-price"><span class="nobr"> Address </span></th>
 									<th class="product-stock-stauts"><span class="nobr"> Payment Type </span></th>
 									<th class="product-stock-stauts"><span class="nobr"> Payment Status </span></th>

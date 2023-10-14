@@ -98,7 +98,7 @@ if(isset($_POST['submit'])){
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header"><strong>Video</strong><small> Form</small></div>
+                    <div class="card-header"><strong>Video</strong></div>
                     <form method="post" enctype="multipart/form-data">
                         <div class="card-body card-block">
                             <div class="form-group">

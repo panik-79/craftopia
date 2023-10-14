@@ -56,32 +56,32 @@ require('top.php');
 </style>
 
         <!-- Start Contact Area -->
-        <section class="htc__contact__area ptb--100 bg__white">
+        <section class="htc__contact__area ptb--100 bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="contact-form-wrap mt--60">
                         <div class="col-xs-12">
                             <div class="contact-title">
-                                <h2 class="title__line--6">SEND A MAIL</h2>
+                                <h2 class="title__line--6">Reach us</h2>
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <form id="contact-form" action="#" method="post">
                                 <div class="single-contact-form">
                                     <div class="contact-box name">
-                                        <input type="text" id="name" name="name" placeholder="Your Name*">
-                                        <input type="email" id="email" name="email" placeholder="Email*">
-										<input type="email" id="mobile" name="mobile" placeholder="Mobile*">
+                                        <input type="text" id="name" name="name" placeholder="Enter your name">
+                                        <input type="email" id="email" name="email" placeholder="Enter your e-mail">
+										<input type="email" id="mobile" name="mobile" placeholder="Your contact no.">
                                     </div>
                                 </div>
                                 
                                 <div class="single-contact-form">
                                     <div class="contact-box message">
-                                        <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                                        <textarea name="message" id="message" placeholder="Type your Message here ..."></textarea>
                                     </div>
                                 </div>
                                 <div class="contact-btn">
-                                    <button type="button" onclick="send_message()" class="mybtn">Send MESSAGE</button>
+                                    <button type="button" onclick="send_message()" class="mybtn">Send Query</button>
                                 </div>
                             </form>
                             <div class="form-output">
@@ -95,7 +95,7 @@ require('top.php');
         <!-- End Contact Area -->
 <!-- Start FAQ Area -->
 
-<section class="faq__area pb--120 bg__white">
+<section class="faq__area pb--120 bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
     <div class="container">
         <div class="faq__header">
             <h2>Frequently Asked Questions</h2>

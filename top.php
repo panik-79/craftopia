@@ -108,6 +108,16 @@ if(isset($_SESSION['USER_LOGIN'])){
             color: #fff; 
         }
 
+        .pro__info{
+            font-size: 40px;
+            color:blue;
+        }
+        .validation-marker img{
+            width: 10px;
+            height: 10px;
+            margin-left: 5px;
+            margin-bottom: 10px;
+        }
 	</style>
 </head>
 <body>
@@ -246,4 +256,4 @@ if(isset($_SESSION['USER_LOGIN'])){
         </div>
 
 
-        <hr style="height:10px">
+<hr style="height:10px">

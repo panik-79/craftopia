@@ -31,8 +31,8 @@ $res=mysqli_query($conn,$sql);
 		  <div class="col-xl-12">
 			 <div class="card">
 				<div class="card-body">
-				   <h4 class="box-title">Categories </h4>
-				   <h4 class="box-link"><a href="manage_categories.php">Add Categories</a> </h4>
+				   <h4 class="box-title">All Categories </h4>
+				   <h4 class="box-link"><a href="manage_categories.php">Add Category</a> </h4>
 				</div>
 				<div class="card-body--">
 				   <div class="table-stats order-table ov-h">

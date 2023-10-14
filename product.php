@@ -9,9 +9,33 @@ if(isset($_GET['id'])){
         $row = mysqli_fetch_assoc($res);
         $seller_id = $row['added_by'];
     }
- 
+    $seller_name_query = "SELECT username FROM admin_users WHERE id = $seller_id";
+    $seller_name_res = mysqli_query($conn, $seller_name_query);
+    if ($seller_name_res) {
+        $seller_name_row = mysqli_fetch_assoc($seller_name_res);
+        $seller_name = $seller_name_row['username'];
+    }
+    // Function to check if the seller has completed 5 successful orders
+    function hasCompleted5Orders($conn, $seller_id) {
+        $query = "SELECT COUNT(DISTINCT o.id) AS order_count
+                  FROM `order` AS o
+                  INNER JOIN order_detail AS od ON o.id = od.order_id
+                  INNER JOIN product AS p ON od.product_id = p.id
+                  WHERE p.added_by = $seller_id
+                  AND o.order_status = 5"; 
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $orderCount = $row['order_count'];
 
+        return $orderCount >= 5;
+    }
 
+    // Checking if the seller has completed 5 successful orders
+    if (hasCompleted5Orders($conn, $seller_id)) {
+        $validationMarker = '<span class="validation-marker"><img src="media/verification_badge.png"> </span>';
+    } else {
+        $validationMarker = '';
+    }
 	if($product_id>0){
 		$get_product=get_product($conn,'','',$product_id);
 	}else{
@@ -40,8 +64,6 @@ if(isset($_POST['review_submit'])){
 	</script>
     ";
     die();
-	// header('location:product.php?id='.$product_id);
-	// die();
 }
 
 
@@ -76,6 +98,9 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
                                     <li>Rs.<?php echo $get_product['0']['price']?></li>&nbsp;&nbsp;&nbsp;
                                     <li class="old__prize"><strike>Rs.<?php echo $get_product['0']['mrp']?></strike></li>
                                 </ul>
+    
+                                <p class="pro__info">Sold by : <?php echo $seller_name; ?><?php echo $validationMarker; ?></p>
+
                                 <p class="pro__info"><?php echo $get_product['0']['short_desc']?></p>
                                 <div class="ht__pro__desc">
                                     <div class="sin__desc">

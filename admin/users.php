@@ -19,14 +19,13 @@ $res=mysqli_query($conn,$sql);
 		  <div class="col-xl-12">
 			 <div class="card">
 				<div class="card-body">
-				   <h4 class="box-title">Users </h4>
+				   <h4 class="box-title">All Users</h4>
 				</div>
 				<div class="card-body--">
 				   <div class="table-stats order-table ov-h">
 					  <table class="table ">
 						 <thead>
 							<tr>
-							   <th class="serial">#</th>
 							   <th>ID</th>
 							   <th>Name</th>
 							   <th>Email</th>
@@ -37,10 +36,8 @@ $res=mysqli_query($conn,$sql);
 						 </thead>
 						 <tbody>
 							<?php 
-							$i=1;
 							while($row=mysqli_fetch_assoc($res)){?>
 							<tr>
-							   <td class="serial"><?php echo $i?></td>
 							   <td><?php echo $row['id']?></td>
 							   <td><?php echo $row['name']?></td>
 							   <td><?php echo $row['email']?></td>

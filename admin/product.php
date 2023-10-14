@@ -41,7 +41,7 @@ $res = mysqli_query($conn, $sql);
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="box-title">Products</h4>
+                        <h4 class="box-title">All Products</h4>
                         <!-- <h4 class="box-link"><a href="manage_product.php">Add Product</a></h4> -->
                     </div>
                     <div class="card-body--">

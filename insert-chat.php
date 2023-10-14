@@ -2,7 +2,6 @@
 
 include_once "connection.inc.php";
 var_dump($_POST);
-file_put_contents('post_data.txt', print_r($_POST, true));
 
 if (isset($_SESSION["USER_ID"])) {
 

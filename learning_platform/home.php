@@ -46,7 +46,7 @@ $res = mysqli_query($conn, $sql);
 <div class="container">
    <header class="header">
       <section class="flex">
-         <a href="../index.php" class="logo"><b>Learn At Craftopia</b></a>
+         <a href="../index.php" class="logo"><b>Learn at Craftopia</b></a>
          <form action="search.html" method="post" class="search-form">
             <input type="text" name="search_box" required placeholder="Search courses..." maxlength="100">
             <button type="submit" class="fas fa-search"></button>

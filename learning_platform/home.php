@@ -58,7 +58,7 @@ $res = mysqli_query($conn, $sql);
       </section>
    </header>   
    
-   <section class="courses">
+   <section class="courses"  style="background-image: url('../media/background.jpg'); background-size: cover; height:100vh;"> 
       <h1 class="heading">Our Categories</h1>
       <div class="box-container">
          <?php while($row = mysqli_fetch_assoc($res)) { ?>

@@ -70,7 +70,7 @@ if (isset($_GET['category_id'])) {
 </style>
 <body>
 
-<header class="header">
+<header class="header" >
    <section class="flex">
       <a href="home.php" class="logo">Learn at Craftopia</a>
       <div class="icons">
@@ -78,13 +78,12 @@ if (isset($_GET['category_id'])) {
       </div>
    </section>
 </header>
-<br><br>
-<section class="playlist-details">
+
+<section class="playlist-details"  style="background-image: url('../media/background.jpg'); background-size: cover;">
    <h1 class="heading">Category: <?php echo $category_name; ?></h1>
 </section>
 
-<section class="playlist-videos">
-   <!-- <h1  >Playlist videos</h1> -->
+<section class="playlist-videos"  style="background-image: url('../media/background.jpg'); background-size: cover; height:100vh;">
    <div class="box-container">
       <?php while ($video_row = mysqli_fetch_assoc($videos_result)) { ?>
          <a class="box" href="watch-video.php?video_id=<?php echo $video_row['vid']; ?>">

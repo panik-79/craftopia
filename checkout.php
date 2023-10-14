@@ -216,7 +216,7 @@ if(isset($_POST['submit'])){
 											</div>
 										</div>
 										<div class="<?php echo $accordion_class?>">
-											payment information
+											Payment Mode
 										</div>
 										<div class="accordion__body">
 											<div class="paymentinfo">
@@ -229,7 +229,7 @@ if(isset($_POST['submit'])){
 												</div>
 											</div>
 										</div>
-										 <input type="submit" name="submit"/>
+										 <input type="submit" name="submit" class="fr__btn"/>
 									</form>
                                 </div>
                             </div>
@@ -256,7 +256,7 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="single-item__content">
                                         <a href="#"><?php echo $pname?></a>
-                                        <span class="price"><?php echo $price*$qty?></span>
+                                        <span class="price">Rs. <?php echo $price*$qty?></span>
                                     </div>
                                     <div class="single-item__remove">
                                         <a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i class="icon-trash icons"></i></a>
@@ -265,8 +265,8 @@ if(isset($_POST['submit'])){
 								<?php } ?>
                             </div>
                             <div class="ordre-details__total">
-                                <h5>Order total</h5>
-                                <span class="price"><?php echo $cart_total?></span>
+                                <h5>Total Price</h5>
+                                <span class="price">Rs. <?php echo $cart_total?></span>
                             </div>
                         </div>
                     </div>

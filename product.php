@@ -71,15 +71,12 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
 
 ?>
 
-        <!-- Start Product Details Area -->
         <section class="htc__product__details bg__white ptb--100" style="background-image: url('media/background.jpg'); background-size: cover;">
-            <!-- Start Product Details Top -->
             <div class="htc__product__details__top">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
                             <div class="htc__product__details__tab__content">
-                                <!-- Start Product Big Images -->
                                 <div class="product__big__images">
                                     <div class="portfolio-full-image tab-content">
                                         <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
@@ -87,7 +84,6 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Product Big Images -->
                                 
                             </div>
                         </div>
@@ -129,10 +125,9 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
                     </div>
                 </div>
             </div>
-            <!-- End Product Details Top -->
         </section>
-        <!-- <br><br> -->
-        <!-- End Product Details Area -->
+
+
 		<section class="htc__produc__decription bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
     <div class="container">
         <div class="row">
@@ -265,11 +260,10 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
 														<li class="old__prize"><strike>Rs.<?php echo $list['mrp']?></strike></li>
 													</ul>
 												</div>
-											</div>
-										
-								</div>
+											</div>	
+								    </div>
 								<?php } ?>
-							</div>
+							    </div>
                         </div>
                     </div>
                 </div>

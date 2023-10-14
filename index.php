@@ -1,16 +1,35 @@
 <?php require('top.php')?>
 <div class="body__overlay"></div>
-        
-        <!-- Start Slider Area -->
-
-        <!-- Start Slider Area -->
-        <!-- Start Category Area -->
         <section class="htc__category__area ptb--100" style="background-image: url('media/background.jpg'); background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
-                            <h2 class="title__line">New Arrivals</h2>
+                            <div class="slider">
+                                <div class="slide">
+                                    <img src="media/flex_1.png" alt="" class="flex_1 flex_slider_item">
+                                </div>
+                                <div class="slide">
+                                    <img src="media/flex_2.jpg" alt="" class="flex_2 flex_slider_item">
+                                </div>
+                                <div class="slide">
+                                    <img src="media/flex_3.jpg" alt="" class="flex_3 flex_slider_item">
+                                </div>
+                                <!-- Add more slides as needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="htc__category__area ptb--100" style="background-image: url('media/background_2.jpg'); background-size: cover;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section__title--2 text-center">
+                            <h2 class="title__line">New Products</h2>
                         </div>
                     </div>
                 </div>
@@ -18,7 +37,7 @@
                     <div class="row">
                         <div class="product__list clearfix mt--30">
 							<?php
-							$get_product=get_product($conn,4);
+							$get_product=get_product($conn,12);
 							foreach($get_product as $list){
 							?>
                             <!-- Start Single Category -->
@@ -57,14 +76,14 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
-                            <h2 class="title__line">---Best Seller---</h2>
+                            <h2 class="title__line">Best Selling Products</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="product__list clearfix mt--30">
 							<?php
-							$get_product=get_product($conn,4,'','','','','yes');
+							$get_product=get_product($conn,8,'','','','','yes');
 							foreach($get_product as $list){
 							?>
                             <!-- Start Single Category -->

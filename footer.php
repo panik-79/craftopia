@@ -42,7 +42,7 @@
                         <div class="col-md-3 col-sm-6 col-xs-12 xmt-40 smt-40">
                             <div class="footer">
                                         <div class="send__btn">
-                                            <a class="fr__btn" href="seller_signup.php">Become a Seller</a>
+                                            <a class="fr__btn" href="seller_signup.php" style="margin-left:100px;">Become a Seller</a>
                                         </div>
                                     </div>
                                     
@@ -53,8 +53,7 @@
                     </div>
                 </div>
             </div>
-            <!-- End Footer Widget -->
-            <!-- Start Copyright Area -->
+
             <div class="htc__copyright bg__cat--5">
                 <div class="container">
                     <div class="row">
@@ -66,21 +65,31 @@
                     </div>
                 </div>
             </div>
-            <!-- End Copyright Area -->
         </footer>
-        <!-- End Footer Style -->
     </div>
-    <!-- Body main wrapper end -->
 
     <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap framework js -->
     <script src="js/bootstrap.min.js"></script>
-    
     <script src="js/plugins.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/waypoints.min.js"></script>
     <script src="js/main.js"></script>
 	<script src="js/custom.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2500,
+                prevArrow: '<button class="slick-prev">Previous</button>',
+                nextArrow: '<button class="slick-next">Next</button>'
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

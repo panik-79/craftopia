@@ -69,8 +69,8 @@ if (isset($_GET['video_id'])) {
       </section>
    </header>
 
-   <section class="watch-video">
-      <div class="video-container">
+   <section class="watch-video"  style="background-image: url('../media/background.jpg'); background-size: cover;">
+      <div class="video-container"  style="background-image: url('../media/background.jpg'); background-size: cover; ">
          <div class="video">
             <video src="<?php echo $video_src; ?>" controls id="video" width="900" height="750"></video>
          </div>

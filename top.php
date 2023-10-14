@@ -38,6 +38,8 @@ if(isset($_SESSION['USER_LOGIN'])){
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 
 	<style>
@@ -118,6 +120,95 @@ if(isset($_SESSION['USER_LOGIN'])){
             margin-left: 5px;
             margin-bottom: 10px;
         }
+
+        .accordion {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .accordion__header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .accordion__body {
+            padding: 10px;
+        }
+
+        .single-input {
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .single-method {
+            margin-bottom: 10px;
+        }
+
+        input[name="address"],
+        input[name="city"],
+        input[name="pincode"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+  
+        .accordion__body + .accordion__header {
+            margin-top: 10px;
+        }
+
+        .slider {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+        }
+
+        .flex_slider_item {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .slick-prev, .slick-next {
+            background-color: #c43b68;
+            color: black;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            transform:scale(1.5);
+            width: 10px;
+            padding: 20px 30px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+
+        .slick-prev{
+            margin-left:10px;
+        }
+        .slick-next{
+            margin-right:10px;
+        }
+
+        .slick-prev:hover, .slick-next:hover{
+            background-color: black;
+            color: white;
+        }
+
+
 	</style>
 </head>
 <body>

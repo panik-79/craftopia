@@ -63,7 +63,7 @@ $order_id=get_safe_value($conn,$_GET['id']);
 
 </style>
 
-<div class="wishlist-area ptb--100 bg__white">
+<div class="wishlist-area ptb--100 bg__white" style="background-image: url('media/background_2.jpg'); background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">

@@ -5,7 +5,7 @@
 
         <!-- Start Slider Area -->
         <!-- Start Category Area -->
-        <section class="htc__category__area ptb--100">
+        <section class="htc__category__area ptb--100" style="background-image: url('media/background.jpg'); background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
@@ -51,9 +51,8 @@
                 </div>
             </div>
         </section>
-        <!-- End Category Area -->
-        <!-- Start Product Area -->
-        <section class="ftr__product__area ptb--100">
+
+        <section class="ftr__product__area ptb--100" style="background-image: url('media/background.jpg'); background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">

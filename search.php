@@ -14,7 +14,7 @@ if($str!=''){
 <div class="body__overlay"></div>
         
         <!-- Start Product Grid -->
-        <section class="htc__product__grid bg__white ptb--100">
+        <section class="htc__product__grid bg__white ptb--100" style="background-image: url('media/background.jpg'); background-size: cover;">
             <div class="container">
                 <div class="row">
 					<?php if(count($get_product)>0){?>

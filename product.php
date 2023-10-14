@@ -50,7 +50,7 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
 ?>
 
         <!-- Start Product Details Area -->
-        <section class="htc__product__details bg__white ptb--100">
+        <section class="htc__product__details bg__white ptb--100" style="background-image: url('media/background.jpg'); background-size: cover;">
             <!-- Start Product Details Top -->
             <div class="htc__product__details__top">
                 <div class="container">
@@ -106,8 +106,9 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
             </div>
             <!-- End Product Details Top -->
         </section>
+        <!-- <br><br> -->
         <!-- End Product Details Area -->
-		<section class="htc__produc__decription bg__white">
+		<section class="htc__produc__decription bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -195,9 +196,7 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
     </div>
 </section>
 
-        <!-- End Product Description -->
 		<?php
-		//unset($_COOKIE['recently_viewed']);
 		if(isset($_COOKIE['recently_viewed'])){
 			$arrRecentView=unserialize($_COOKIE['recently_viewed']);
 			$countRecentView=count($arrRecentView);
@@ -209,7 +208,7 @@ $product_review_res=mysqli_query($conn,"select users.name,product_review.id,prod
 			$res=mysqli_query($conn,"select * from product where id IN ($recentViewId) and status=1");
 			
 		?>
-		<section class="htc__produc__decription bg__white">
+		<section class="htc__produc__decription bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">

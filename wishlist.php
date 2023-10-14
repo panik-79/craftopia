@@ -86,7 +86,7 @@ $res=mysqli_query($conn,"select product.name,product.id as pid,product.image,pro
     }
 
 </style>
-<div class="cart-main-area ptb--100 bg__white">
+<div class="cart-main-area ptb--100 bg__white" >
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">

@@ -8,7 +8,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 	<?php
 }
 ?>
-        <section class="htc__contact__area ptb--100 bg__white">
+        <section class="htc__contact__area ptb--100 bg__white" style="background-image: url('media/background_2.jpg'); background-size: cover;" >
             <div class="container">
                 <div class="row">
 					<div class="col-md-6">

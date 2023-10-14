@@ -269,7 +269,7 @@ $result = mysqli_stmt_get_result($stmt);
 
 </style>
 <body>
-    <div class="chat-container">
+    <div class="chat-container" style="background-image: url('media/background.jpg'); background-size: cover;">
         <!-- Left Sidebar with Seller Names -->
         <div class="sidebar">
             <h2>Your Chats</h2>

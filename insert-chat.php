@@ -19,7 +19,7 @@ if (isset($_SESSION["USER_ID"])) {
     echo '</script>';
 
         if (!empty($message)) {
-            $sql = mysqli_query($con, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg)
+            $sql = mysqli_query($conn, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg)
                                         VALUES ({$incoming_id}, {$outgoing_id}, '{$message}')");
             
             if ($sql) {

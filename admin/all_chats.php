@@ -3,7 +3,7 @@ require('top.inc.php');
 
 $sellerId = $_SESSION['ADMIN_ID'];
 $sql = "SELECT DISTINCT outgoing_msg_id FROM messages WHERE incoming_msg_id = $sellerId";
-$stmt = mysqli_prepare($con, $sql);
+$stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 ?>
@@ -240,7 +240,7 @@ button[type="submit"] i.fab.fa-telegram-plane {
 
                     // Query the customers table to fetch customer details
                     $customerQuery = "SELECT * FROM users WHERE id = $customerId";
-                    $stmtCustomer = mysqli_prepare($con, $customerQuery);
+                    $stmtCustomer = mysqli_prepare($conn, $customerQuery);
 
                     mysqli_stmt_execute($stmtCustomer);
                     $customerResult = mysqli_stmt_get_result($stmtCustomer);

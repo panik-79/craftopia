@@ -3,7 +3,7 @@ require('../connection.inc.php');
 require('../functions.inc.php');
 
 $sql = "SELECT * FROM categories";
-$res = mysqli_query($con, $sql);
+$res = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>

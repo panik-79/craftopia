@@ -2,28 +2,28 @@
 require('top.inc.php');
 isAdmin();
 if(isset($_GET['type']) && $_GET['type']!=''){
-	$type=get_safe_value($con,$_GET['type']);
+	$type=get_safe_value($conn,$_GET['type']);
 	if($type=='status'){
-		$operation=get_safe_value($con,$_GET['operation']);
-		$id=get_safe_value($con,$_GET['id']);
+		$operation=get_safe_value($conn,$_GET['operation']);
+		$id=get_safe_value($conn,$_GET['id']);
 		if($operation=='active'){
 			$status='1';
 		}else{
 			$status='0';
 		}
 		$update_status_sql="update categories set status='$status' where id='$id'";
-		mysqli_query($con,$update_status_sql);
+		mysqli_query($conn,$update_status_sql);
 	}
 	
 	if($type=='delete'){
-		$id=get_safe_value($con,$_GET['id']);
+		$id=get_safe_value($conn,$_GET['id']);
 		$delete_sql="delete from categories where id='$id'";
-		mysqli_query($con,$delete_sql);
+		mysqli_query($conn,$delete_sql);
 	}
 }
 
 $sql="select * from categories order by categories asc";
-$res=mysqli_query($con,$sql);
+$res=mysqli_query($conn,$sql);
 ?>
 <div class="content pb-0">
 	<div class="orders">

@@ -6,8 +6,8 @@ $msg = '';
 $existingImage = '';
 
 if (isset($_GET['id']) && $_GET['id'] != '') {
-    $id = get_safe_value($con, $_GET['id']);
-    $res = mysqli_query($con, "SELECT * FROM categories WHERE id='$id'");
+    $id = get_safe_value($conn, $_GET['id']);
+    $res = mysqli_query($conn, "SELECT * FROM categories WHERE id='$id'");
     $check = mysqli_num_rows($res);
     if ($check > 0) {
         $row = mysqli_fetch_assoc($res);
@@ -20,7 +20,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 }
 
 if (isset($_POST['submit'])) {
-    $categories = get_safe_value($con, $_POST['categories']);
+    $categories = get_safe_value($conn, $_POST['categories']);
 
     // Check if a new image file is uploaded
     if ($_FILES['image']['name'] != '') {
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         $image = $existingImage;
     }
 
-    $res = mysqli_query($con, "SELECT * FROM categories WHERE categories='$categories'");
+    $res = mysqli_query($conn, "SELECT * FROM categories WHERE categories='$categories'");
     $check = mysqli_num_rows($res);
     if ($check > 0) {
         if (isset($_GET['id']) && $_GET['id'] != '') {
@@ -51,9 +51,9 @@ if (isset($_POST['submit'])) {
 
     if ($msg == '') {
         if (isset($_GET['id']) && $_GET['id'] != '') {
-            mysqli_query($con, "UPDATE categories SET categories='$categories', image='$image' WHERE id='$id'");
+            mysqli_query($conn, "UPDATE categories SET categories='$categories', image='$image' WHERE id='$id'");
         } else {
-            mysqli_query($con, "INSERT INTO categories(categories, image, status) VALUES ('$categories', '$image', '1')");
+            mysqli_query($conn, "INSERT INTO categories(categories, image, status) VALUES ('$categories', '$image', '1')");
         }
         header('location: categories.php');
         die();

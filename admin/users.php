@@ -2,16 +2,16 @@
 require('top.inc.php');
 isAdmin();
 if(isset($_GET['type']) && $_GET['type']!=''){
-	$type=get_safe_value($con,$_GET['type']);
+	$type=get_safe_value($conn,$_GET['type']);
 	if($type=='delete'){
-		$id=get_safe_value($con,$_GET['id']);
+		$id=get_safe_value($conn,$_GET['id']);
 		$delete_sql="delete from users where id='$id'";
-		mysqli_query($con,$delete_sql);
+		mysqli_query($conn,$delete_sql);
 	}
 }
 
 $sql="select * from users order by id desc";
-$res=mysqli_query($con,$sql);
+$res=mysqli_query($conn,$sql);
 ?>
 <div class="content pb-0">
 	<div class="orders">

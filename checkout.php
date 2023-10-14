@@ -11,13 +11,13 @@ if(!isset($_SESSION['cart']) || count($_SESSION['cart'])==0){
 $cart_total=0;
 
 if(isset($_POST['submit'])){
-	$address=get_safe_value($con,$_POST['address']);
-	$city=get_safe_value($con,$_POST['city']);
-	$pincode=get_safe_value($con,$_POST['pincode']);
-	$payment_type=get_safe_value($con,$_POST['payment_type']);
+	$address=get_safe_value($conn,$_POST['address']);
+	$city=get_safe_value($conn,$_POST['city']);
+	$pincode=get_safe_value($conn,$_POST['pincode']);
+	$payment_type=get_safe_value($conn,$_POST['payment_type']);
 	$user_id=$_SESSION['USER_ID'];
 	foreach($_SESSION['cart'] as $key=>$val){
-		$productArr=get_product($con,'','',$key);
+		$productArr=get_product($conn,'','',$key);
 		$price=$productArr[0]['price'];
 		$qty=$val['qty'];
 		$cart_total=$cart_total+($price*$qty);
@@ -34,16 +34,16 @@ if(isset($_POST['submit'])){
 	$txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 		
 	
-	mysqli_query($con,"insert into `order`(user_id,address,city,pincode,payment_type,payment_status,order_status,added_on,total_price,txnid) values('$user_id','$address','$city','$pincode','$payment_type','$payment_status','$order_status','$added_on','$total_price','$txnid')");
+	mysqli_query($conn,"insert into `order`(user_id,address,city,pincode,payment_type,payment_status,order_status,added_on,total_price,txnid) values('$user_id','$address','$city','$pincode','$payment_type','$payment_status','$order_status','$added_on','$total_price','$txnid')");
 	
-	$order_id=mysqli_insert_id($con);
+	$order_id=mysqli_insert_id($conn);
 	
 	foreach($_SESSION['cart'] as $key=>$val){
-		$productArr=get_product($con,'','',$key);
+		$productArr=get_product($conn,'','',$key);
 		$price=$productArr[0]['price'];
 		$qty=$val['qty'];
 		
-		mysqli_query($con,"insert into `order_detail`(order_id,product_id,qty,price) values('$order_id','$key','$qty','$price')");
+		mysqli_query($conn,"insert into `order_detail`(order_id,product_id,qty,price) values('$order_id','$key','$qty','$price')");
 	}
 	
 	unset($_SESSION['cart']);
@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
 		  }
 		}
 		
-		$userArr=mysqli_fetch_assoc(mysqli_query($con,"select * from users where id='$user_id'"));
+		$userArr=mysqli_fetch_assoc(mysqli_query($conn,"select * from users where id='$user_id'"));
 		
 		$formError = 0;
 		$posted['txnid']=$txnid;
@@ -242,7 +242,7 @@ if(isset($_POST['submit'])){
                                 <?php
 								$cart_total=0;
 								foreach($_SESSION['cart'] as $key=>$val){
-								$productArr=get_product($con,'','',$key);
+								$productArr=get_product($conn,'','',$key);
 								$pname=$productArr[0]['name'];
 								$mrp=$productArr[0]['mrp'];
 								$price=$productArr[0]['price'];

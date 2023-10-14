@@ -8,7 +8,7 @@ if (isset($_GET['category_id'])) {
 
     // Fetch the category details
     $category_query = "SELECT categories, image FROM categories WHERE id = $category_id";
-    $category_result = mysqli_query($con, $category_query);
+    $category_result = mysqli_query($conn, $category_query);
 
     if ($category_result) {
         $category_row = mysqli_fetch_assoc($category_result);
@@ -20,7 +20,7 @@ if (isset($_GET['category_id'])) {
             exit;
         }
     } else {
-        echo "Error fetching category details: " . mysqli_error($con);
+        echo "Error fetching category details: " . mysqli_error($conn);
         exit;
     }
 
@@ -28,7 +28,7 @@ if (isset($_GET['category_id'])) {
 
     // Fetch all videos in the selected category
     $videos_query = "SELECT * FROM videos WHERE categories_id = $category_id";
-    $videos_result = mysqli_query($con, $videos_query);
+    $videos_result = mysqli_query($conn, $videos_query);
 } else {
     echo "Category ID is not provided!";
     exit;

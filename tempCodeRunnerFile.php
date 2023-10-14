@@ -20,7 +20,7 @@
                             $recentViewId = implode(",", $arrRecentView);
                             echo "Recent View IDs: " . $recentViewId;
 
-                            $recentViewRes = mysqli_query($con, "SELECT * FROM product WHERE id IN ($recentViewId) AND status=1");
+                            $recentViewRes = mysqli_query($conn, "SELECT * FROM product WHERE id IN ($recentViewId) AND status=1");
                             while ($list = mysqli_fetch_assoc($recentViewRes)) {
                                 ?>
                                 <div class="col-xs-3">

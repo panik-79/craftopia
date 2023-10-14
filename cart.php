@@ -3,93 +3,96 @@ require('top.php');
 ?>
 
 <style>
+    .card-body {
+        padding: 1rem;
+    }
 
-.row{
-    margin-left: 70px;
-}
-/* Style for the card body */
-.card-body {
-    padding: 1rem;
-}
+    .card-title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
 
-/* Style for the card title (product name) */
-.card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-}
+    .card-text {
+        margin-bottom: 0.5rem;
+    }
 
-/* Style for the card text (price, quantity, total) */
-.card-text {
-    margin-bottom: 0.5rem;
-}
+    .card-img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+    }
 
-/* Style for the card image */
-.card-img {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-}
+    .card {
+        margin: 10px 0;
+    }
+    .img-link img{
+        margin-top:20px;
+    }
 
-/* Style for the card container */
-.card {
-    margin: 10px 0;
-}
-.img-link img{
-    margin-top:20px;
-}
-/* Style for the product details */
-.product-details {
-    display: flex;
-    align-items: center;
-}
+    .product-details {
+        display: flex;
+        align-items: center;
+    }
 
-/* Style for the product price */
-.product-price {
-    flex: 1;
-    font-weight: bold;
-}
+    .product-price {
+        flex: 1;
+        font-weight: bold;
+    }
 
-/* Style for the product quantity and total */
-.product-quantity,
-.product-subtotal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .product-quantity,
+    .product-subtotal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* Style for the "Remove" button */
-.btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-    color: #fff;
-    text-decoration: none;
-}
+    .btn__fr {
+        background-color: #c43b68;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        }
 
-.btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-    color: #fff;
-}
+    .quantity-input {
+        width: 40px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+        text-align: center;
+    }
 
+    .quantity-input:hover {
+        border-color: #333; 
+    }
 
+    .quantity-input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
 </style>
 
 <div class="cart-main-area ptb--100 bg__white">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-left:250px;">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <form action="#">
-                    <div class="row">
+                    <div class="row" style="margin-left:70px;">
                         <?php
                         if (isset($_SESSION['cart'])) {
                             foreach ($_SESSION['cart'] as $key => $val) {
-                                $productArr = get_product($con, '', '', $key);
+                                $productArr = get_product($conn, '', '', $key);
                                 $pname = $productArr[0]['name'];
                                 $mrp = $productArr[0]['mrp'];
                                 $price = $productArr[0]['price'];
                                 $image = $productArr[0]['image'];
                                 $qty = $val['qty'];
-                                $product_url = 'product.php?id=' . $key; // Product page URL
+                                $product_url = 'product.php?id=' . $key;
                                 ?>
                                 <div class="col-12">
                                     <div class="card mb-3">
@@ -106,16 +109,18 @@ require('top.php');
                                                         <a href="<?php echo $product_url ?>"><?php echo $pname ?></a>
                                                     </h5>
                                                     <p class="card-text">Price: Rs.<?php echo $price ?></p>
-                                                    <p class="card-text">Quantity:
-                                                        <input type="number" id="<?php echo $key ?>qty" value="<?php echo $qty ?>" />
+                                                    <p class="card-text">
+                                                        Quantity:
+                                                        <input type="number" class="quantity-input" id="<?php echo $key ?>qty" value="<?php echo $qty ?>" />
                                                         <a href="javascript:void(0)" onclick="manage_cart('<?php echo $key ?>','update')">Update</a>
                                                     </p>
+
                                                     <p class="card-text">Total: Rs.
                                                         <?php echo number_format((float)$qty * (float)$price, 2, '.', '') ?>
                                                     </p>
                                                     <a href="javascript:void(0)"
                                                        onclick="manage_cart('<?php echo $key ?>','remove')"
-                                                       class="btn btn-danger">Remove</a>
+                                                       class="btn btn__fr">Remove</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,7 +135,7 @@ require('top.php');
                     <div class="buttons-cart">
                         <a href="<?php echo SITE_PATH ?>">Continue Shopping</a>
                     </div>
-                    <div class="buttons-cart checkout--btn">
+                    <div class="buttons-cart checkout--btn" style="margin-right:145px;">
                         <a href="checkout.php">Checkout</a>
                     </div>
                 </div>

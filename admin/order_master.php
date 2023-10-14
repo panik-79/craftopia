@@ -2,7 +2,7 @@
 require('top.inc.php');
 isAdmin();
 $sql="select * from users order by id desc";
-$res=mysqli_query($con,$sql);
+$res=mysqli_query($conn,$sql);
 ?>
 <div class="content pb-0">
 	<div class="orders">
@@ -27,7 +27,7 @@ $res=mysqli_query($con,$sql);
 							</thead>
 							<tbody>
 								<?php
-								$res=mysqli_query($con,"select `order`.*,order_status.name as order_status_str from `order`,order_status where order_status.id=`order`.order_status");
+								$res=mysqli_query($conn,"select `order`.*,order_status.name as order_status_str from `order`,order_status where order_status.id=`order`.order_status");
 								while($row=mysqli_fetch_assoc($res)){
 								?>
 								<tr>

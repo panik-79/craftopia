@@ -23,8 +23,8 @@ $msg='';
 $image_required='required';
 if(isset($_GET['id']) && $_GET['id']!=''){
 	$image_required='';
-	$id=get_safe_value($con,$_GET['id']);
-	$res=mysqli_query($con,"select * from product where id='$id' $condition1");
+	$id=get_safe_value($conn,$_GET['id']);
+	$res=mysqli_query($conn,"select * from product where id='$id' $condition1");
 	$check=mysqli_num_rows($res);
 	if($check>0){
 		$row=mysqli_fetch_assoc($res);
@@ -44,18 +44,18 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 }
 
 if(isset($_POST['submit'])){
-	$categories_id=get_safe_value($con,$_POST['categories_id']);
-	$name=get_safe_value($con,$_POST['name']);
-	$mrp=get_safe_value($con,$_POST['mrp']);
-	$price=get_safe_value($con,$_POST['price']);
-	$qty=get_safe_value($con,$_POST['qty']);
-	$short_desc=get_safe_value($con,$_POST['short_desc']);
-	$description=get_safe_value($con,$_POST['description']);
-	$best_seller=get_safe_value($con,$_POST['best_seller']);
+	$categories_id=get_safe_value($conn,$_POST['categories_id']);
+	$name=get_safe_value($conn,$_POST['name']);
+	$mrp=get_safe_value($conn,$_POST['mrp']);
+	$price=get_safe_value($conn,$_POST['price']);
+	$qty=get_safe_value($conn,$_POST['qty']);
+	$short_desc=get_safe_value($conn,$_POST['short_desc']);
+	$description=get_safe_value($conn,$_POST['description']);
+	$best_seller=get_safe_value($conn,$_POST['best_seller']);
 
 	
 	
-	$res = mysqli_query($con, "select * from product where name='$name'$condition1");
+	$res = mysqli_query($conn, "select * from product where name='$name'$condition1");
 	$check=mysqli_num_rows($res);
 	if($check>0){
 		if(isset($_GET['id']) && $_GET['id']!=''){
@@ -91,11 +91,11 @@ if(isset($_POST['submit'])){
 			}else{
 				$update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',best_seller='$best_seller' where id='$id'";
 			}
-			mysqli_query($con,$update_sql);
+			mysqli_query($conn,$update_sql);
 		}else{
 			$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 			move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-			mysqli_query($con,"insert into product(categories_id,name,mrp,price,qty,short_desc,description,best_seller,status,image, added_by) values('$categories_id','$name','$mrp','$price','$qty','$short_desc','$description','$best_seller',1,'$image', '".$_SESSION['ADMIN_ID']."')");
+			mysqli_query($conn,"insert into product(categories_id,name,mrp,price,qty,short_desc,description,best_seller,status,image, added_by) values('$categories_id','$name','$mrp','$price','$qty','$short_desc','$description','$best_seller',1,'$image', '".$_SESSION['ADMIN_ID']."')");
 		}
 		header('location:product.php');
 		die();
@@ -115,7 +115,7 @@ if(isset($_POST['submit'])){
 									<select class="form-control" name="categories_id">
 										<option>Select Category</option>
 										<?php
-										$res=mysqli_query($con,"select id,categories from categories order by categories asc");
+										$res=mysqli_query($conn,"select id,categories from categories order by categories asc");
 										while($row=mysqli_fetch_assoc($res)){
 											if($row['id']==$categories_id){
 												echo "<option selected value=".$row['id'].">".$row['categories']."</option>";

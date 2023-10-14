@@ -9,7 +9,7 @@ if(!isset($_GET['id']) && $_GET['id']!=''){
 	<?php
 }
 
-$cat_id=mysqli_real_escape_string($con,$_GET['id']);
+$cat_id=mysqli_real_escape_string($conn,$_GET['id']);
 
 $price_high_selected="";
 $price_low_selected="";
@@ -17,7 +17,7 @@ $new_selected="";
 $old_selected="";
 $sort_order="";
 if(isset($_GET['sort'])){
-	$sort=mysqli_real_escape_string($con,$_GET['sort']);
+	$sort=mysqli_real_escape_string($conn,$_GET['sort']);
 	if($sort=="price_high"){
 		$sort_order=" order by product.price desc ";
 		$price_high_selected="selected";	
@@ -34,7 +34,7 @@ if(isset($_GET['sort'])){
 }
 
 if($cat_id>0){
-	$get_product=get_product($con,'',$cat_id,'','',$sort_order);
+	$get_product=get_product($conn,'',$cat_id,'','',$sort_order);
 }else{
 	?>
 	<script>
@@ -55,7 +55,7 @@ if($cat_id>0){
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
                                     <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>','<?php echo SITE_PATH?>')" id="sort_product_id">
-                                        <option value="">Sort by</option>
+                                        <option value=""><b> Sort by &nbsp; &nbsp; &nbsp; &nbsp; &#8595;</b></option>
                                         <option value="price_low" <?php echo $price_low_selected?>>Price low to high</option>
                                         <option value="price_high" <?php echo $price_high_selected?>>Price high to low</option>
                                         <option value="new" <?php echo $new_selected?>>Newest first</option>
@@ -99,9 +99,7 @@ if($cat_id>0){
                             </div>
                         </div>
                     </div>
-					<?php } else { 
-						echo "Data not found";
-					} ?>
+					<?php } ?>
                 
 				</div>
             </div>

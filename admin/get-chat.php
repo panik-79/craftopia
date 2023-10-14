@@ -11,7 +11,7 @@ if(isset($_SESSION["ADMIN_ID"])){
     $messages_query = "SELECT * FROM messages WHERE (outgoing_msg_id = $seller_id  AND incoming_msg_id = $customer_id) OR 
                         (outgoing_msg_id = $customer_id AND incoming_msg_id = $seller_id) ORDER BY msg_id";
 
-    $stmt_messages = mysqli_prepare($con, $messages_query);
+    $stmt_messages = mysqli_prepare($conn, $messages_query);
     mysqli_stmt_execute($stmt_messages);
     $messages_result = mysqli_stmt_get_result($stmt_messages);
     

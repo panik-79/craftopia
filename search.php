@@ -1,8 +1,8 @@
 <?php 
 require('top.php');
-$str=mysqli_real_escape_string($con,$_GET['str']);
+$str=mysqli_real_escape_string($conn,$_GET['str']);
 if($str!=''){
-	$get_product=get_product($con,'','','',$str);
+	$get_product=get_product($conn,'','','',$str);
 }else{
 	?>
 	<script>

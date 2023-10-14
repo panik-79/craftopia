@@ -7,7 +7,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 	</script>
 	<?php
 }
-$order_id=get_safe_value($con,$_GET['id']);
+$order_id=get_safe_value($conn,$_GET['id']);
 ?>
 
 <style>
@@ -72,7 +72,7 @@ $order_id=get_safe_value($con,$_GET['id']);
                         <div class="wishlist-cards">
                             <?php
                             $uid = $_SESSION['USER_ID'];
-                            $res = mysqli_query($con, "select distinct(order_detail.id), order_detail.*, product.name, product.image from order_detail, product, `order` where order_detail.order_id='$order_id' and `order`.user_id='$uid' and order_detail.product_id=product.id");
+                            $res = mysqli_query($conn, "select distinct(order_detail.id), order_detail.*, product.name, product.image from order_detail, product, `order` where order_detail.order_id='$order_id' and `order`.user_id='$uid' and order_detail.product_id=product.id");
                             $total_price = 0;
                             while ($row = mysqli_fetch_assoc($res)) {
                                 $total_price += $row['qty'] * $row['price'];

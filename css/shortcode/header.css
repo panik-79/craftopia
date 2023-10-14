@@ -180,25 +180,6 @@ nav.off__canvars--menu ul li ul li a:hover {
     color: #ddd;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*-----------------------
   Header One Search
 -----------------------*/
@@ -234,17 +215,6 @@ nav.off__canvars--menu ul li ul li a:hover {
   position: relative;
   margin-right: 20px;
 }
-.header__search a::before {
-  background: #898989;
-  content: "";
-  height: 15px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-70%);
-          transform: translateY(-70%);
-  width: 2px;
-}
 
 .header__account a {
     color: #000;
@@ -253,21 +223,7 @@ nav.off__canvars--menu ul li ul li a:hover {
     padding-right: 15px;
     position: relative;
 }
-.header__account a::before {
-    background: #898989 none repeat scroll 0 0;
-    content: "";
-    height: 15px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 2px;
-}
 
-
-
-/*-----------------------------------------
-  Sticky  For  Header
--------------------------------------------*/
 
 .sticky__header.scroll-header {
   -webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
@@ -304,9 +260,7 @@ nav.off__canvars--menu ul li ul li a:hover {
   max-height: 25px;
 }
 
-/*-----------------------------
-  Dropdown Menu
---------------------------------*/
+
 .main__menu li.drop{
     position: relative;
 }
@@ -361,114 +315,6 @@ nav.off__canvars--menu ul li ul li a:hover {
     margin: 0;
 }
 
-
-
-
-/*-------------------------------
-  Mega Menu
----------------------------------*/
-
-.main__menu li.drop ul.dropdown.mega_dropdown {
-  width: 654px;
-}
-
-.dropdown.mega_dropdown {
-    width: 655px;
-}
-.dropdown.mega_dropdown {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px !important;
-}
-.dropdown.mega_dropdown li a.mega__title {
-    display: inline-block;
-    font-size: 20px;
-    margin-bottom: 20px;
-    padding: 0 0 10px;
-    position: relative;
-    text-transform: capitalize;
-}
-.dropdown.mega_dropdown li a.mega__title::before {
-    background: #000 none repeat scroll 0 0;
-    bottom: 0;
-    content: "";
-    height: 1px;
-    left: 0;
-    position: absolute;
-    width: 100%;
-}
-
-.main__menu li.drop ul.dropdown.mega_dropdown {
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-
-.main__menu li.drop ul.dropdown.mega_dropdown li:hover > a {
-  background: transparent none repeat scroll 0 0;
-  color: #c43b68 ;
-}
-.main__menu ul.dropdown.mega_dropdown li a {
-  padding: 4px 0 12px;
-}
-.main__menu ul.dropdown.mega_dropdown li {
-  border-bottom: 1px solid transparent;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*---------------------------------
-  cd-words-wrapper
---------------------------------*/
-.theme-color .cd-words-wrapper {
-  padding: 0px !important;
-}
-
-
-
-
-/*----------------------
-  Header Top One
-------------------------*/
-
-
-.select__language {
-    display: flex;
-    margin-right: 34px;
-}
-.select__language li a {
-    color: #333333;
-    text-transform: uppercase;
-}
-
-.select__language > li > ul > li > a {
-    color: #333333;
-}
-
-.select__language > li:hover > a , .select__language > li > ul > li > a:hover , .htc__contact a:hover{
-    color: #c43b68;
-}
 .htc__contact a {
     color: #333333;
     font-size: 15px;
@@ -506,47 +352,6 @@ nav.off__canvars--menu ul li ul li a:hover {
 .ht__header__right li + li {
     margin-left: 30px;
 }
-
-/*-----------------------------------------
-  Header Language Option
--------------------------------------------*/
-
-.select__language > li + li {
-    margin-left: 8px;
-    padding-left: 18px;
-}
-
-.select__language li {
-    position: relative;
-}
-
-.select__language li.drop--lan .language__option {
-    background: #fff none repeat scroll 0 0;
-    left: 0;
-    opacity: 0;
-    padding: 10px 20px;
-    position: absolute;
-    top: 100%;
-    transition: all 0.4s ease 0s;
-    visibility: hidden;
-    width: 150px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-}
-.select__language li.drop--lan:hover .language__option {
-    opacity: 1;
-    visibility: visible;
-}
-.language__option li {
-    padding: 3px 0;
-}
-
-
-
-
-
-
-
 
 /*-----------------------------------------
   Header Search area
@@ -659,9 +464,6 @@ nav.off__canvars--menu ul li ul li a:hover {
   transition: all 300ms ease 0s;
 }
 
-/*--------------------------
-  Body Onerlay Menu
-----------------------------*/
 .body__overlay {
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -877,24 +679,11 @@ h4.offset__title {
   Shopping Cart Area
 ---------------------------------*/
 
-.shp__pro__details h2 {
-    border-top-width: 0;
-    color: #000;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.4;
-    padding: 0;
-    text-transform: none;
-}
 .shoping__total .subtotal {
     color: #000;
     font-size: 20px;
     font-weight: 400;
     text-transform: capitalize;
-}
-.shp__pro__details .shp__price {
-    color: #c43b68;
-    display: block;
 }
 
 .shoping__total .subtotal {
@@ -947,9 +736,6 @@ h4.offset__title {
 .remove__btn {
     text-align: right;
     width: 20px;
-}
-.shp__pro__details {
-    min-width: 71%;
 }
 .shp__cart__wrap {
     margin-top: -30px;

@@ -8,7 +8,7 @@ if (isset($_GET['video_id'])) {
 
     // Fetch video details from the database
     $video_query = "SELECT * FROM videos WHERE vid = $video_id";
-    $video_result = mysqli_query($con, $video_query);
+    $video_result = mysqli_query($conn, $video_query);
 
     if ($video_row = mysqli_fetch_assoc($video_result)) {
         $video_title = $video_row['title'];

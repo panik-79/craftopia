@@ -10,29 +10,29 @@ if ($_SESSION['ADMIN_ROLE'] == 1) {
 }
 
 if(isset($_GET['type']) && $_GET['type']!=''){
-	$type=get_safe_value($con,$_GET['type']);
+	$type=get_safe_value($conn,$_GET['type']);
 	if($type=='status'){
-		$operation=get_safe_value($con,$_GET['operation']);
-		$id=get_safe_value($con,$_GET['id']);
+		$operation=get_safe_value($conn,$_GET['operation']);
+		$id=get_safe_value($conn,$_GET['id']);
 		if($operation=='active'){
 			$status='1';
 		}else{
 			$status='0';
 		}
 		$update_status_sql="update product set status='$status' $condition where id='$id'";
-		mysqli_query($con,$update_status_sql);
+		mysqli_query($conn,$update_status_sql);
 	}
 	
 	if($type=='delete'){
-		$id=get_safe_value($con,$_GET['id']);
+		$id=get_safe_value($conn,$_GET['id']);
 		$delete_sql="delete from product where id='$id' $condition";
-		mysqli_query($con,$delete_sql);
+		mysqli_query($conn,$delete_sql);
 	}
 }
 
 $sql = "SELECT product.*, categories.categories FROM product, categories WHERE product.categories_id = categories.id $condition ORDER BY product.id DESC";
 
-$res = mysqli_query($con, $sql);
+$res = mysqli_query($conn, $sql);
 ?>
 
 <div class="content pb-0">
@@ -49,7 +49,6 @@ $res = mysqli_query($con, $sql);
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="serial">#</th>
                                         <th width="2%">ID</th>
                                         <th width="10%">Category</th>
                                         <th width="30%">Name</th>
@@ -65,7 +64,6 @@ $res = mysqli_query($con, $sql);
                                     $i = 1;
                                     while ($row = mysqli_fetch_assoc($res)) { ?>
                                         <tr>
-                                            <td class="serial"><?php echo $i ?></td>
                                             <td><?php echo $row['id'] ?></td>
                                             <td><?php echo $row['categories'] ?></td>
                                             <td><?php echo $row['name'] ?></td>
@@ -78,7 +76,7 @@ $res = mysqli_query($con, $sql);
                                                 if ($row['status'] == 1) {
                                                     echo "<span class='badge badge-complete'><a href='?type=status&operation=deactive&id=" . $row['id'] . "'>Active</a></span>&nbsp;";
                                                 } else {
-                                                    echo "<span class='badge badge-pending'><a href='?type=status&operation=active&id=" . $row['id'] . "'>Deactive</a></span>&nbsp;";
+                                                    echo "<span class='badge badge-pending'><a href='?type=status&operation=active&id=" . $row['id'] . "'>inactive</a></span>&nbsp;";
                                                 }
                                                 echo "<span class='badge badge-edit'><a href='manage_product.php?id=" . $row['id'] . "'>Edit</a></span>&nbsp;";
 
@@ -88,7 +86,6 @@ $res = mysqli_query($con, $sql);
                                             </td>
                                         </tr>
                                     <?php
-                                        $i++;
                                     } ?>
                                 </tbody>
                             </table>

@@ -9,7 +9,7 @@
     echo "Seller ID: " . $incoming_msg_id . "<br>";
     echo "Product id: ". $_GET['pid'];
     $q = "SELECT username FROM admin_users WHERE id =  {$incoming_msg_id}";
-    $sq = mysqli_query($con, $q);
+    $sq = mysqli_query($conn, $q);
     if ($sq) {
         $rw = mysqli_fetch_assoc($sq); 
         if ($rw) {

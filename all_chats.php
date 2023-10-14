@@ -6,7 +6,7 @@ $userId = $_SESSION['USER_ID'];
 
 // Query the database to get a list of sellers the user has chatted with
 $sql = "SELECT DISTINCT incoming_msg_id FROM messages WHERE outgoing_msg_id = $userId";
-$stmt = mysqli_prepare($con, $sql);
+$stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
@@ -280,7 +280,7 @@ $result = mysqli_stmt_get_result($stmt);
 
                     // Query the sellers table to fetch seller details
                     $sellerQuery = "SELECT * FROM admin_users WHERE id = $sellerId";
-                    $stmtSeller = mysqli_prepare($con, $sellerQuery);
+                    $stmtSeller = mysqli_prepare($conn, $sellerQuery);
 
                     mysqli_stmt_execute($stmtSeller);
                     $sellerResult = mysqli_stmt_get_result($stmtSeller);

@@ -4,15 +4,15 @@ require('connection.inc.php');
 
 if(isset($_POST['submit'])){
 
-   $name = mysqli_real_escape_string($con, $_POST['username']);
-   $email = mysqli_real_escape_string($con, $_POST['email_id']);
-   $mob = mysqli_real_escape_string($con, $_POST['contact_no']);
-   $pass = mysqli_real_escape_string($con, $_POST['password']);
-   $cpass = mysqli_real_escape_string($con, $_POST['cpassword']);
+   $name = mysqli_real_escape_string($conn, $_POST['username']);
+   $email = mysqli_real_escape_string($conn, $_POST['email_id']);
+   $mob = mysqli_real_escape_string($conn, $_POST['contact_no']);
+   $pass = mysqli_real_escape_string($conn, $_POST['password']);
+   $cpass = mysqli_real_escape_string($conn, $_POST['cpassword']);
 
    $select = " SELECT * FROM admin_users WHERE email_id = '$email' && username = '$name' ";
 
-   $result = mysqli_query($con, $select);
+   $result = mysqli_query($conn, $select);
 
    if(mysqli_num_rows($result) > 0){
 
@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
          $error[] = 'Password not matched!';
       }else{
          $insert = "INSERT INTO admin_users(username, email_id, contact_no, password, role, status) VALUES('$name','$email', '$mob', '$pass',1, 1)";
-         mysqli_query($con, $insert);
+         mysqli_query($conn, $insert);
          header("location:admin/login.php");
          exit;
       }

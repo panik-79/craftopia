@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="product__list clearfix mt--30">
 							<?php
-							$get_product=get_product($con,4);
+							$get_product=get_product($conn,4);
 							foreach($get_product as $list){
 							?>
                             <!-- Start Single Category -->
@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="product__list clearfix mt--30">
 							<?php
-							$get_product=get_product($con,4,'','','','','yes');
+							$get_product=get_product($conn,4,'','','','','yes');
 							foreach($get_product as $list){
 							?>
                             <!-- Start Single Category -->

@@ -3,23 +3,11 @@
 (function($) {
     'use strict';
 
-
-/*-------------------------------------------
-    01. jQuery MeanMenu
---------------------------------------------- */
-    
     $('.mobile-menu nav').meanmenu({
         meanMenuContainer: '.mobile-menu-area',
         meanScreenWidth: "991",
         meanRevealPosition: "right",
     });
-
-
-
-
-/*-------------------------------------------
-    03. Product  Masonry (width)
---------------------------------------------- */ 
 
     $('.htc__product__container').imagesLoaded( function() {
       
@@ -34,7 +22,6 @@
           percentPosition: true,
           transitionDuration: '0.7s',
           masonry: {
-            // use outer width of grid-sizer for columnWidth
             columnWidth: '.single__pro',
           }
         });
@@ -47,11 +34,6 @@
         event.preventDefault();
     });
 
-
-
-/*-------------------------------------------
-    04. Sticky Header
---------------------------------------------- */ 
     var win = $(window);
     var sticky_id = $("#sticky-header-with-topbar");
         win.on('scroll',function() {    
@@ -63,20 +45,12 @@
         }
     });
 
-/*--------------------------
-    05. ScrollUp
----------------------------- */
     $.scrollUp({
         scrollText: '<i class="zmdi zmdi-chevron-up"></i>',
         easingType: 'linear',
         scrollSpeed: 900,
         animation: 'fade'
     });
-
-
-/*------------------------------------    
-    06. Search Bar
---------------------------------------*/ 
     
     $( '.search__open' ).on( 'click', function () {
         $( 'body' ).toggleClass( 'search__box__show__hide' );
@@ -88,46 +62,11 @@
         return false;
     });
 
-
-/*------------------------------------    
-    07. Shopping Cart Area
---------------------------------------*/
-
-    $('.cart__menu').on('click', function(e) {
-        e.preventDefault();
-        $('.shopping__cart').addClass('shopping__cart__on');
-        $('.body__overlay').addClass('is-visible');
-
-    });
-
     $('.offsetmenu__close__btn').on('click', function(e) {
         e.preventDefault();
         $('.shopping__cart').removeClass('shopping__cart__on');
         $('.body__overlay').removeClass('is-visible');
     });
-
-
-/*------------------------------------    
-    08. Filter Area
---------------------------------------*/
-
-    $('.filter__menu').on('click', function(e) {
-        e.preventDefault();
-        $('.filter__wrap').addClass('filter__menu__on');
-        $('.body__overlay').addClass('is-visible');
-
-    });
-
-    $('.filter__menu__close__btn').on('click', function(e) {
-        e.preventDefault();
-        $('.filter__wrap').removeClass('filter__menu__on');
-        $('.body__overlay').removeClass('is-visible');
-    });
-
-
-/*------------------------------------    
-    09. Toogle Menu
---------------------------------------*/
 
     $('.toggle__menu').on('click', function(e) {
         e.preventDefault();
@@ -142,18 +81,6 @@
         $('.body__overlay').removeClass('is-visible');
     });
 
-
-/*------------------------------------    
-    10. User Menu
---------------------------------------*/
-
-    $('.user__menu').on('click', function(e) {
-        e.preventDefault();
-        $('.user__meta').addClass('user__meta__on');
-        $('.body__overlay').addClass('is-visible');
-
-    });
-
     $('.offsetmenu__close__btn').on('click', function(e) {
         e.preventDefault();
         $('.user__meta').removeClass('user__meta__on');
@@ -161,30 +88,6 @@
     });
 
 
-
-/*------------------------------------    
-    11. Menu 
---------------------------------------*/
-
-    $('.menu__click').on('click', function(e) {
-        e.preventDefault();
-        $('.off__canvars__wrap').addClass('off__canvars__wrap__on');
-        $('.body__overlay').addClass('is-visible');
-        $('body').addClass('off__canvars__open');
-        $(this).hide();
-    });
-
-    $('.menu__close__btn').on('click', function() {
-        $('.off__canvars__wrap').removeClass('off__canvars__wrap__on');
-        $('.body__overlay').removeClass('is-visible');
-        $('body').removeClass('off__canvars__open');
-        $('.menu__click').show();
-    });
-
-
-/*------------------------------------    
-    12. Menu Dropdown
---------------------------------------*/
     function offCanvasMenuDropdown(){
 
         $('.off__canvars__dropdown-menu').hide();
@@ -199,11 +102,6 @@
     }
     offCanvasMenuDropdown();
 
-
-/*------------------------------------    
-    13. Overlay Close
---------------------------------------*/
-
     $('.body__overlay').on('click', function() {
         $(this).removeClass('is-visible');
         $('.offsetmenu').removeClass('offsetmenu__on');
@@ -214,71 +112,5 @@
         $('body').removeClass('off__canvars__open');
         $('.menu__click').show();
     });
-
-
-/*---------------------------------------------------
-    14. Testimonial Image Slider As Nav
----------------------------------------------------*/
-
-    $('.ht__testimonial__activation').slick({
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    swipeToSlide: true,
-    dots: false,
-    centerMode: true,
-    focusOnSelect: true,
-    centerPadding: '10px',
-    responsive: [
-      {
-        breakpoint: 600,
-        settings: {
-          dots: false,
-          slidesToShow: 1,
-          slidesToScroll: 1,  
-          centerPadding: '10px',
-          }
-      },
-      {
-        breakpoint: 320,
-        settings: {
-          autoplay: true,
-          dots: false,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: false,
-          focusOnSelect: false,
-          }
-      }
-    ]
-    });
-
-
-/*-----------------------------------------------
-    15. Brand Area
--------------------------------------------------*/
-
-    $('.brand__list').owlCarousel({
-      loop: true,
-      margin:0,
-      nav:false,
-      autoplay: true,
-      autoplayTimeout: 10000,
-      items:5,
-      dots: false,
-      lazyLoad: true,
-      responsive: {
-        0: {
-          items: 2,
-        },
-        767: {
-          items: 4,
-        },
-        991: {
-          items: 5,
-        }
-      }
-    });
-
-
 
 })(jQuery);

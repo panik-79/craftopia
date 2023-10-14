@@ -9,7 +9,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 }
 $uid=$_SESSION['USER_ID'];
 
-$res=mysqli_query($con,"select product.name,product.id as pid,product.image,product.price,product.mrp,wishlist.id from product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'");
+$res=mysqli_query($conn,"select product.name,product.id as pid,product.image,product.price,product.mrp,wishlist.id from product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'");
 ?>
 <style>
     /* Style for the product list */
@@ -82,7 +82,7 @@ $res=mysqli_query($con,"select product.name,product.id as pid,product.image,prod
     }
 
     .buttons-cart a:hover {
-        background-color: #555;
+        background-color: #c43b68;
     }
 
 </style>

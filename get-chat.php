@@ -12,7 +12,7 @@ if(isset($_SESSION["USER_ID"]) && isset($_POST['incomingid'])){
             WHERE (outgoing_msg_id = ? AND incoming_msg_id = ?)
             OR (outgoing_msg_id = ? AND incoming_msg_id = ?) 
             ORDER BY msg_id";
-    $stmt = mysqli_prepare($con, $sql);
+    $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "iiii", $outgoing_id, $incoming_id, $incoming_id, $outgoing_id);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);

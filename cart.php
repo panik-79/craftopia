@@ -77,7 +77,7 @@ require('top.php');
     }
 </style>
 
-<div class="cart-main-area ptb--100 bg__white">
+<div class="cart-main-area ptb--100 bg__white" style="background-image: url('media/background.jpg'); background-size: cover;">
     <div class="container">
         <div class="row" style="margin-left:250px;">
             <div class="col-md-12 col-sm-12 col-xs-12">

@@ -42,11 +42,77 @@ if(isset($_POST['submit'])){
       <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
       <link rel="stylesheet" href="assets/css/style.css">
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+      <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+         *{
+            font-family: 'Poppins', sans-serif;
+            margin:0; padding:0;
+            box-sizing: border-box;
+            outline: none; border:none;
+            text-decoration: none;
+         }
+
+         body {
+            background-color: white;
+         }
+
+         .sufee-login {
+            display: flex;
+            align-content: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            height: 100vh;
+         }
+
+         .login-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+         }
+
+         .login-form {
+            margin-top: 30px;
+         }
+
+         .form-group label {
+            color: #c43b68;
+         }
+
+         .form-control {
+            background-color: #f7f7f7;
+            border: 2px solid #c43b68; 
+            color: #333; 
+         }
+
+         .btn-success {
+            background-color: #c43b68;
+            border: none;
+            color: white;
+         }
+
+         .btn-success:hover {
+            background-color: #ff4981;
+         }
+
+         .field_error {
+            color: #ff0000;
+         }
+         h1 {
+            color: #c43b68; 
+            text-align: center;
+            font-size: 36px; 
+            font-weight:bold;
+         }
+      </style>
+
    </head>
-   <body class="bg-dark">
+   <body  style="background-image: url('../media/background.jpg'); background-size: cover;">
       <div class="sufee-login d-flex align-content-center flex-wrap">
          <div class="container">
             <div class="login-content">
+               <h1 style="margin-bottom:10px; margin-top:20px;">Seller Login</h1>
                <div class="login-form mt-150">
                   <form method="post">
                      <div class="form-group">
@@ -57,11 +123,11 @@ if(isset($_POST['submit'])){
                         <label>Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password" required>
                      </div>
-                     <button type="submit" name="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                     <button type="submit" name="submit" class="btn btn-success btn-flat m-b-30 m-t-30" style="margin-top:20px;">Sign in</button>
 					</form>
 					<div class="field_error"><?php echo $msg?></div>
                </div>
-            </div>
+            </div>   
          </div>
       </div>
       <script src="assets/js/vendor/jquery-2.1.4.min.js" type="text/javascript"></script>
